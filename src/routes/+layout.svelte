@@ -44,8 +44,11 @@
 
 <style>
 	:global(*) {
-		--white: #fdfdfd;
+		--white: #fff;
         font-family: 'Sfpro';
+
+		--green-200: rgba(201, 223, 221, 0.5);
+		--green-400: #C9DFDD;
 
 		/* Smallest size, suitable for small print or tags */
 		--fs-300: 12px;
