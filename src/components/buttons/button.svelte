@@ -1,7 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
 
-	export let bgColor = '#000000';
 	export let bgColorHover = '#f5f5f5';
 	export let text = 'text';
 	export let link = '';
@@ -23,7 +22,6 @@
 
 <button
 	class="button"
-	style:background-color={bgColor}
 	style:border-radius={borderRadius}
 	style:border-width={borderWidth}
 	style:border-color={bgColorHover}
@@ -35,22 +33,18 @@
 
 <style lang="scss">
 	button {
-		background-color: var(--red-300);
+		cursor: pointer;
+		background-color: var(--green-500);
 		color: var(--white);
-		font-size: var(--fs-700);
+		font-size: var(--fs-500);
 
 		border-radius: 100vw;
-		padding: 4px 24px;
-		box-shadow:
-			4px 4px 12px 0 rgba(0, 0, 0, 0.25),
-			inset 2px 2px 4px rgba(255, 255, 255, 0.8);
+		padding: 16px 24px;
+		// box-shadow: 4px 4px 12px 0 rgba(0, 0, 0, 0.25);
 
 		transition: ease-in-out 0.3s;
-		&:hover {
-			transform: translateY(-3px);
-			box-shadow:
-				4px 4px 12px 0 rgba(0, 0, 0, 0.5),
-				inset 2px 2px 4px rgba(255, 255, 255, 0.8);
-		}
+		// &:hover {
+		// 	box-shadow: 8px 8px 24px rgba(219, 34, 34, 0.5);
+		// }
 	}
 </style>

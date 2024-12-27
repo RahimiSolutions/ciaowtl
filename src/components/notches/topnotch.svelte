@@ -9,16 +9,16 @@
 	onMount(() => {
 		setTimeout(() => {
 			logo = true;
-		}, 800); // Adjust delay as needed
+		}, 400); // Adjust delay as needed
 	});
 </script>
 
 <div class="notch">
-	<div class="top-notch" transition:fly={{ y: -50, delay: 300, duration: 500, easing: quintOut }}>
+	<div class="top-notch" transition:fly={{ y: -50, delay: 300, duration: 1000, easing: quintOut }}>
 		<img src={topNotch} alt="" />
 
 		{#if logo}
-			<div class="logo" transition:fly={{ y: -50, delay: 300, duration: 500, easing: quintOut }}>
+			<div class="logo" transition:fly={{ y: -50, delay: 300, duration: 1000, easing: quintOut }}>
 				<img src={ciaowtl} alt="" />
 			</div>
 		{/if}
@@ -49,7 +49,7 @@
                 justify-content: center;
                 align-items: center;
 				img {
-					max-width: 250px;
+					max-width: 60%;
 				}
 			}
 		}

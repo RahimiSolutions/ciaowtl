@@ -1,0 +1,90 @@
+<script>
+	import manOne from '$lib/images/manOne.jpg';
+	import manTwo from '$lib/images/manTwo.jpg';
+	import womanOne from '$lib/images/womanOne.jpg';
+</script>
+
+<div class="container">
+	<div class="images">
+		<div class="image" style="background-image: url({manOne});"></div>
+		<div class="image" style="background-image: url({manTwo});"></div>
+		<div class="image" style="background-image: url({womanOne});"></div>
+		<!-- <img src={manOne} alt="Portrait of reviewer man" class="image" />
+		<img src={manTwo} alt="Portrait of reviewer man" class="image" />
+		<img src={womanOne} alt="Portrait of reviewer woman" class="image" /> -->
+	</div>
+	<div class="text-container">
+		<div class="title">40+ Happy Clients</div>
+		<div class="reviews">
+			<p>5.0 stars</p>
+			<p>Google Reviews</p>
+		</div>
+	</div>
+</div>
+
+<style lang="scss">
+	.container {
+		display: flex;
+		align-items: center;
+		height: 100px;
+
+		.images {
+			position: relative;
+			width: 200px; /* Adjust based on the number of images and their overlap */
+			height: 100px;
+
+			.image {
+				border: 3px solid white;
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				background-size: cover;
+				
+				z-index: -1;
+
+				&:nth-child(1) {
+					left: 0;
+                    background-position: center;
+				}
+
+				&:nth-child(2) {
+					left: 50px;
+                    background-position: top;
+				}
+
+				&:nth-child(3) {
+					left: 100px;
+                    background-position: top;
+				}
+			}
+		}
+
+		.text-container {
+			margin-left: 20px;
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+			justify-content: space-evenly;
+
+			.title {
+				font-weight: 600;
+				font-size: var(--fs-500);
+			}
+
+			.reviews {
+				display: flex;
+				gap: 8px;
+
+				p {
+					border: 1px solid black;
+					border-radius: 5px;
+					padding: 4px 12px;
+					font-size: var(--fs-400);
+				}
+			}
+		}
+	}
+</style>

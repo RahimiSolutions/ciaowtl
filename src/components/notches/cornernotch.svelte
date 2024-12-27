@@ -9,16 +9,16 @@
 	onMount(() => {
 		setTimeout(() => {
 			logo = true;
-		}, 800); // Adjust delay as needed
+		}, 400); // Adjust delay as needed
 	});
 </script>
 
 <div class="notch">
-	<div class="corner-notch" transition:fly={{ y: 50, delay: 300, duration: 500, easing: quintOut }}>
+	<div class="corner-notch" transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
 		<img src={cornerNotch} alt="" />
 
 		{#if logo}
-			<div class="cta" transition:fly={{ y: 50, delay: 300, duration: 500, easing: quintOut }}>
+			<div class="cta" transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
 				<img src={cta} alt="" />
 			</div>
 		{/if}
