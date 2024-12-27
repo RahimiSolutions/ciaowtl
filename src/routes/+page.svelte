@@ -66,7 +66,7 @@
 					<div class="background">
 						{#if bgImage}
 							<div class="bg-image" transition:fade={{ delay: 0, duration: 500 }}>
-								<img src={shipping} alt="" />
+								<img loading="lazy" src={shipping} alt="" />
 								<div class="bg-overlay"></div>
 							</div>
 						{/if}

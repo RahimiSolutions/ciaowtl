@@ -54,7 +54,7 @@
 <div class="card">
 	<div class="background" style="background-image: url({picture});"></div>
 	<div class="icon">
-		<img src={icon} alt="icon" />
+		<img loading="lazy" src={icon} alt="icon" />
 	</div>
 	<div class="number">{number}</div>
 	<div class="text">{text}</div>

@@ -10,7 +10,7 @@
 	<div class="overlay"></div>
 	<div class="gradient-overlay"></div>
 	<div class="top">
-		<img src={cornerNotch} alt="corner notch top left" />
+		<img loading="lazy" src={cornerNotch} alt="corner notch top left" />
 		<h2>{@html title}</h2>
 	</div>
 	<div class="content">
