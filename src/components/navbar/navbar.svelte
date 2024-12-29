@@ -13,9 +13,9 @@
 		const documentHeight = document.documentElement.scrollHeight;
 		const windowHeight = window.innerHeight;
 		const past500px = scrollY > 800;
-		const nearBottom = scrollY + windowHeight >= documentHeight - 800;
+		// const nearBottom = scrollY + windowHeight >= documentHeight - 800;
 		// Show the BookingCta only if scrolled past 500px from the top and not near the bottom
-		showTopMenu = past500px && !nearBottom;
+		showTopMenu = past500px;
 	}
 
 	onMount(() => {

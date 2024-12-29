@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import TransportType from '../cards/transportType.svelte';
 	import { writable } from 'svelte/store';
-	import { Spring } from 'svelte/motion';
 
 	import ArrowRight from '$lib/icons/arrowRight.svelte';
 	import ArrowLeft from '$lib/icons/arrowLeft.svelte';

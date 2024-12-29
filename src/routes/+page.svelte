@@ -16,12 +16,20 @@
 	import partner from '$lib/images/handshake.jpg';
 	import processPicture from '$lib/images/process.jpg';
 	import multilingual from '$lib/images/multilingual.jpg';
-	import multilingualOpt from '$lib/images/multilingual_opt.jpg';
+	import wave from '$lib/images/wave-green.svg';
+	import ServiceCard from '../components/cards/serviceCard.svelte';
+	import notchCorner from '$lib/images/corner-notch.svg';
 
 	let lenis: Lenis | null = null;
 	let notches = false;
 	let bgImage = false;
 	let textVisible = false;
+	let flipAll = false;
+
+	
+	function handleFlipAll() {
+		flipAll = !flipAll;
+	}
 
 	onMount(() => {
 		lenis = new Lenis({
@@ -65,7 +73,7 @@
 				<div class="content-wrapper">
 					<div class="background">
 						{#if bgImage}
-							<div class="bg-image" transition:fade={{ delay: 0, duration: 500 }}>
+							<div class="bg-image" transition:fade={{ delay: 100, duration: 1000 }}>
 								<img loading="lazy" src={shipping} alt="" />
 								<div class="bg-overlay"></div>
 							</div>
@@ -116,7 +124,7 @@
 							From A to Z, we handle your shipments with care and precision.<br /> Reliable, multilingual,
 							and committed to your success.
 						</div>
-						<div class="button"><Button text="Request a Quote" borderRadius="5px" /></div>
+						<div class="button"><Button text="Request a Quote" borderRadius="5px" onClick="https://wa.me/4917657966211"/></div>
 					</div>
 				</div>
 			</div>
@@ -146,7 +154,36 @@
 					/>
 				</div>
 				<div class="button">
-					<Button text="Learn More" borderRadius="5px" />
+					<Button text="Learn More" borderRadius="5px" onClick="https://wa.me/4917657966211"/>
+				</div>
+			</div>
+
+			<div class="services">
+				<img src={wave} alt="" />
+				<div class="content">
+					<div class="text">
+						<div class="title"><h1>Comprehensive Logistics Solutions</h1></div>
+						<div class="subtitle">
+							<p>We provide end-to-end transport services tailored to your needs.</p>
+						</div>
+					</div>
+					<div class="cards">
+						<div class="card" id="Truck"><ServiceCard title="Truck" flipped={flipAll}/></div>
+						<div class="card" id="Air"><ServiceCard title="Air" flipped={flipAll}/></div>
+						<div class="card" id="Ship"><ServiceCard title="Ship" flipped={flipAll}/></div>
+						<div class="card" id="Rail"><ServiceCard title="Rail" flipped={flipAll}/></div>
+						<div class="card" id="Import"><ServiceCard title="Import" flipped={flipAll}/></div>
+						<div class="card" id="Export"><ServiceCard title="Export" flipped={flipAll}/></div>
+						<div class="card" id="Project"><ServiceCard title="Project" flipped={flipAll}/></div>
+						<div class="card" id="Breakbulk"><ServiceCard title="Breakbulk" flipped={flipAll}/></div>
+					</div>
+					<div class="explore">
+						<img src={notchCorner} alt="" />
+						<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+						<div class="button" >
+							<Button text="Explore All Services" borderRadius="5px" onClick={handleFlipAll}/>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -306,15 +343,78 @@
 					text-align: start;
 				}
 			}
-			.content{
+			.content {
 				display: flex;
 				justify-content: space-between;
 			}
-			.button{
+			.button {
 				width: 100%;
 				display: flex;
 				justify-content: end;
 				margin-top: 36px;
+			}
+		}
+
+		.services {
+			margin: 100px 0;
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			img {
+				width: 100%;
+				margin-bottom: -1px;
+			}
+			.content {
+				width: 100%;
+				background-color: var(--green-600);
+				.text {
+					color: var(--white);
+					text-align: center;
+					.title {
+						text-transform: uppercase;
+						h1 {
+							font-weight: 900;
+						}
+						font-size: var(--fs-400);
+						margin-bottom: 16px;
+					}
+
+					.subtitle {
+						font-size: var(--fs-500);
+						font-weight: 300;
+					}
+				}
+				.cards {
+					width: 80%;
+					margin: 150px auto;
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 100px;
+					.card {
+						scroll-margin-top: 120px;
+						display: flex;
+						justify-content: center;
+					}
+				}
+
+				.explore {
+					bottom: 0;
+					right: 0;
+					position: absolute;
+					img {
+						position: absolute;
+						width: 500px;
+						bottom: 0px;
+						right: 0px;
+						z-index: 2;
+					}
+					.button {
+						left: -35%;
+						margin-bottom: 10%;
+						position: relative;
+						z-index: 3;
+					}
+				}
 			}
 		}
 	}

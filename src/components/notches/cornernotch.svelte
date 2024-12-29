@@ -4,7 +4,12 @@
 	import { quintOut } from 'svelte/easing';
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 	let logo = false;
+
+	function handleClick() {
+		window.open('https://wa.me/4917657966211', '_blank');
+	}
 
 	onMount(() => {
 		setTimeout(() => {
@@ -14,12 +19,16 @@
 </script>
 
 <div class="notch">
-	<div class="corner-notch" transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
+	<div
+		class="corner-notch"
+		transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}
+	>
 		<img src={cornerNotch} alt="" />
 
 		{#if logo}
-			<div class="cta" transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
-				<img src={cta} alt="" />
+			<div class="cta"  transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
+				<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
+				<img onclick={handleClick} src={cta} alt="" />
 			</div>
 		{/if}
 	</div>
@@ -49,16 +58,16 @@
 			display: flex;
 			justify-content: center;
 			align-items: end;
-            bottom: 10%;
-            left: 20%;
-			
+			bottom: 10%;
+			left: 20%;
+
 			img {
 				max-width: 150%;
-                transition: 0.2s ease-in-out;
-                &:hover{
-                    scale: 1.01;
-                    cursor: pointer;
-                }
+				transition: 0.2s ease-in-out;
+				&:hover {
+					scale: 1.01;
+					cursor: pointer;
+				}
 			}
 		}
 	}
