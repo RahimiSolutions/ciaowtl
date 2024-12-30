@@ -38,10 +38,10 @@
 				>
 					<ul class="left-menu">
 						<li class:active={activeItem === 'Home'} on:click={() => (activeItem = 'Home')}>
-							Home
+							<a href="/#home">Home</a>
 						</li>
 						<li class:active={activeItem === 'Services'} on:click={() => (activeItem = 'Services')}>
-							Services
+							<a href="/#services">Services</a>
 						</li>
 						<li
 							class:active={activeItem === 'Containers'}
@@ -59,9 +59,11 @@
 				transition:fly={{ y: -50, delay: 300, duration: 500, easing: quintOut }}
 			>
 				<ul class="left-menu">
-					<li class:active={activeItem === 'Home'} on:click={() => (activeItem = 'Home')}>Home</li>
+					<li class:active={activeItem === 'Home'} on:click={() => (activeItem = 'Home')}>
+						<a href="/#home">Home</a>
+					</li>
 					<li class:active={activeItem === 'Services'} on:click={() => (activeItem = 'Services')}>
-						Services
+						<a href="/#services">Services</a>
 					</li>
 					<li
 						class:active={activeItem === 'Containers'}
@@ -96,11 +98,18 @@
 				font-size: 24px;
 				list-style-type: none;
 				cursor: pointer;
+				a {
+					text-decoration: none;
+					color: var(--black);
+				}
 				&.active {
 					list-style-type: disc;
 					font-weight: 600;
 					color: var(--white);
 					background-color: var(--black);
+					a {
+						color: var(--white);
+					}
 				}
 				&:not(.active):hover {
 					background-color: var(--black-200);
@@ -144,11 +153,18 @@
 				font-size: 24px;
 				list-style-type: none;
 				cursor: pointer;
+				a {
+					text-decoration: none;
+					color: var(--black);
+				}
 				&.active {
 					list-style-type: disc;
 					font-weight: 600;
 					color: var(--white);
 					background-color: var(--black);
+					a {
+						color: var(--white);
+					}
 				}
 				&:not(.active):hover {
 					background-color: var(--black-200);

@@ -14,7 +14,7 @@
 	onMount(() => {
 		setTimeout(() => {
 			logo = true;
-		}, 400); // Adjust delay as needed
+		}, 400); // delay
 	});
 </script>
 

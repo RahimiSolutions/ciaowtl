@@ -19,6 +19,8 @@
 	import wave from '$lib/images/wave-green.svg';
 	import ServiceCard from '../components/cards/serviceCard.svelte';
 	import notchCorner from '$lib/images/corner-notch.svg';
+	import ReviewsWidget from '../components/containers/reviewsWidget.svelte';
+	import LogoMarquee from '../components/containers/LogoMarquee.svelte';
 
 	let lenis: Lenis | null = null;
 	let notches = false;
@@ -26,7 +28,6 @@
 	let textVisible = false;
 	let flipAll = false;
 
-	
 	function handleFlipAll() {
 		flipAll = !flipAll;
 	}
@@ -69,7 +70,7 @@
 <MediaQuery query="(min-width: 1024px)" let:matches>
 	{#if matches}
 		<div class="container">
-			<div class="hero">
+			<div class="hero" id="home">
 				<div class="content-wrapper">
 					<div class="background">
 						{#if bgImage}
@@ -124,7 +125,13 @@
 							From A to Z, we handle your shipments with care and precision.<br /> Reliable, multilingual,
 							and committed to your success.
 						</div>
-						<div class="button"><Button text="Request a Quote" borderRadius="5px" onClick="https://wa.me/4917657966211"/></div>
+						<div class="button">
+							<Button
+								text="Request a Quote"
+								borderRadius="5px"
+								onClick="https://wa.me/4917657966211"
+							/>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -154,11 +161,11 @@
 					/>
 				</div>
 				<div class="button">
-					<Button text="Learn More" borderRadius="5px" onClick="https://wa.me/4917657966211"/>
+					<Button text="Learn More" borderRadius="5px" onClick="https://wa.me/4917657966211" />
 				</div>
 			</div>
 
-			<div class="services">
+			<div class="services" id="services">
 				<img src={wave} alt="" />
 				<div class="content">
 					<div class="text">
@@ -168,21 +175,55 @@
 						</div>
 					</div>
 					<div class="cards">
-						<div class="card" id="Truck"><ServiceCard title="Truck" flipped={flipAll}/></div>
-						<div class="card" id="Air"><ServiceCard title="Air" flipped={flipAll}/></div>
-						<div class="card" id="Ship"><ServiceCard title="Ship" flipped={flipAll}/></div>
-						<div class="card" id="Rail"><ServiceCard title="Rail" flipped={flipAll}/></div>
-						<div class="card" id="Import"><ServiceCard title="Import" flipped={flipAll}/></div>
-						<div class="card" id="Export"><ServiceCard title="Export" flipped={flipAll}/></div>
-						<div class="card" id="Project"><ServiceCard title="Project" flipped={flipAll}/></div>
-						<div class="card" id="Breakbulk"><ServiceCard title="Breakbulk" flipped={flipAll}/></div>
+						<div class="card" id="Truck"><ServiceCard title="Truck" flipped={flipAll} /></div>
+						<div class="card" id="Air"><ServiceCard title="Air" flipped={flipAll} /></div>
+						<div class="card" id="Ship"><ServiceCard title="Ship" flipped={flipAll} /></div>
+						<div class="card" id="Rail"><ServiceCard title="Rail" flipped={flipAll} /></div>
+						<div class="card" id="Import"><ServiceCard title="Import" flipped={flipAll} /></div>
+						<div class="card" id="Export"><ServiceCard title="Export" flipped={flipAll} /></div>
+						<div class="card" id="Project"><ServiceCard title="Project" flipped={flipAll} /></div>
+						<div class="card" id="Breakbulk">
+							<ServiceCard title="Breakbulk" flipped={flipAll} />
+						</div>
 					</div>
 					<div class="explore">
 						<img src={notchCorner} alt="" />
 						<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-						<div class="button" >
-							<Button text="Explore All Services" borderRadius="5px" onClick={handleFlipAll}/>
+						<div class="button">
+							<Button text="Explore All Services" borderRadius="5px" onClick={handleFlipAll} />
 						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="social-proof">
+				<div class="text">
+					<div class="tag"><p>You can trust us to deliver your shipment safely</p></div>
+					<div class="title">
+						<h1>
+							But dont take it from us<br />
+							<span class="bold">- Hear what our clients say</span>
+						</h1>
+					</div>
+				</div>
+				<!-- <ReviewsWidget /> -->
+				<div class="review-widget">
+					<script src="https://static.elfsight.com/platform/platform.js" async></script>
+					<div
+						class="elfsight-app-b236145a-e48d-457c-a568-c24604f49d7c"
+						data-elfsight-app-lazy
+					></div>
+				</div>
+
+				<div class="partners">
+					<div class="text">
+						<p>
+							With the help from <span class="highlight">our trusted partners</span>, we make sure
+							to deliver your shipment <span class="highlight">safely and securely</span>
+						</p>
+					</div>
+					<div class="partner-marquee">
+						<LogoMarquee />
 					</div>
 				</div>
 			</div>
@@ -414,6 +455,55 @@
 						position: relative;
 						z-index: 3;
 					}
+				}
+			}
+		}
+
+		.social-proof {
+			.text {
+				display: flex;
+				flex-direction: column;
+				width: 80%;
+				margin: auto;
+				margin-bottom: 24px;
+				.tag {
+					margin-bottom: 16px;
+					p {
+						font-size: var(--fs-500);
+					}
+				}
+				.title {
+					h1 {
+						font-size: var(--fs-600);
+						color: var(--green-500);
+						font-weight: 500;
+						.bold {
+							font-weight: 900;
+						}
+					}
+				}
+			}
+			.review-widget {
+				padding: 50px 0;
+				background-color: var(--green-500);
+			}
+			.partners {
+				margin: 100px 0;
+				.text {
+					font-size: var(--fs-600);
+					width: 80%;
+					text-align: start;
+					margin-bottom: 36px;
+					p {
+						width: 40ch;
+					}
+					.highlight {
+						color: var(--green-500);
+					}
+				}
+				.partner-marquee {
+					padding: 50px 0;
+					background-color: var(--green-600);
 				}
 			}
 		}
