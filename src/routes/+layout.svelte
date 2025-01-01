@@ -3,6 +3,7 @@
 	import { onMount } from 'svelte';
     import '../lib/styles/fonts.css';
 	import Navbar from '../components/navbar/navbar.svelte';
+	import Footer from '../components/footer/footer.svelte';
 
 	var userLang = navigator.language;
 	// nb-NO
@@ -43,6 +44,7 @@
 
 <Navbar />
 <slot />
+<Footer />
 
 <style>
 	:global(*) {
@@ -93,5 +95,27 @@
 	}
 	:global(body) {
 		background-color: var(--white);
+	}
+
+	/* Scrollbar Styles */
+	/* For Webkit browsers */
+	:global(::-webkit-scrollbar) {
+		width: 12px; /* Width of the scrollbar */
+		height: 12px; /* Height of the scrollbar */
+	}
+
+	:global(::-webkit-scrollbar-track) {
+		background: var(--black-200); /* Background of the scrollbar track */
+		border-radius: 10px; /* Rounded corners for the track */
+	}
+
+	:global(::-webkit-scrollbar-thumb) {
+		background-color: var(--green-500); /* Color of the scrollbar thumb */
+		border-radius: 10px; /* Rounded corners for the thumb */
+		border: 3px solid var(--black-200); /* Space around the thumb */
+	}
+
+	:global(::-webkit-scrollbar-thumb:hover) {
+		background-color: var(--green-600); /* Color of the scrollbar thumb on hover */
 	}
 </style>

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import corner from '$lib/images/square-cornernotch-green.svg';
-	import ArrowRight from '$lib/icons/arrowRight.svelte';
+	import Arrow from '$lib/icons/arrow.svelte';
 
 	import airplanePicture from '$lib/images/plane-landing.jpg';
 	import truckPicture from '$lib/images/truck.jpg';
@@ -78,7 +78,7 @@
 			<img src={corner} alt="corner" class="corner" />
 			<div class="circle" on:click|stopPropagation={flipCard}>
 				<div class="arrow">
-					<ArrowRight width="36" fill="#000" />
+					<Arrow width={36} fill="#000" rotation={180} />
 				</div>
 			</div>
 		</div>

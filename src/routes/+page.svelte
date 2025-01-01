@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { asClassComponent } from 'svelte/legacy';
 	import Lenis from 'lenis';
 	import 'lenis/dist/lenis.css';
 	import { onDestroy, onMount } from 'svelte';
@@ -21,6 +22,8 @@
 	import notchCorner from '$lib/images/corner-notch.svg';
 	import ReviewsWidget from '../components/containers/reviewsWidget.svelte';
 	import LogoMarquee from '../components/containers/LogoMarquee.svelte';
+	import cornerNotchGreen from '$lib/images/corner-notch-green.svg';
+	import ContactCard from '../components/cards/contactCard.svelte';
 
 	let lenis: Lenis | null = null;
 	let notches = false;
@@ -135,7 +138,7 @@
 					</div>
 				</div>
 			</div>
-
+			<hr />
 			<div class="about">
 				<div class="top">
 					<div class="title"><h2>Why Choose Us?</h2></div>
@@ -205,14 +208,41 @@
 							<span class="bold">- Hear what our clients say</span>
 						</h1>
 					</div>
+					<div class="vr"></div>
 				</div>
 				<!-- <ReviewsWidget /> -->
-				<div class="review-widget">
+				<div class="review-widget" id="reviews">
 					<script src="https://static.elfsight.com/platform/platform.js" async></script>
 					<div
 						class="elfsight-app-b236145a-e48d-457c-a568-c24604f49d7c"
 						data-elfsight-app-lazy
 					></div>
+				</div>
+
+				<div class="stats">
+					<div class="vr"></div>
+					<div class="stats-grid">
+						<div class="grid-item">
+							<div class="number">150+</div>
+							<div class="text">
+								<span class="highlight">Happy Clients</span> Served Internationally
+							</div>
+						</div>
+						<div class="grid-item">
+							<div class="number">35+</div>
+							<div class="text">Years Combined <span class="highlight">Experience</span></div>
+						</div>
+
+						<div class="grid-item">
+							<div class="number">5/5</div>
+							<div class="text"><span class="highlight">Stars Rated</span> By our Clients</div>
+						</div>
+						<div class="grid-item">
+							<div class="number">780+</div>
+							<div class="text">Shipments<span class="highlight">Successfully Delivered</span></div>
+						</div>
+					</div>
+					<hr />
 				</div>
 
 				<div class="partners">
@@ -224,6 +254,18 @@
 					</div>
 					<div class="partner-marquee">
 						<LogoMarquee />
+						<img src={cornerNotchGreen} alt="" />
+					</div>
+				</div>
+
+				<div class="contact" id="contact">
+					<div class="title"><h1>Contact our friendly team</h1></div>
+					<div class="subtitle"><p>Let us know how we can help</p></div>
+
+					<div class="contact-cards">
+						<ContactCard type="email" />
+						<ContactCard type="address" />
+						<ContactCard type="phone" />
 					</div>
 				</div>
 			</div>
@@ -233,6 +275,10 @@
 
 <style lang="scss">
 	.container {
+		hr {
+			background-color: var(--white);
+			border-top: 1px solid var(--green-400);
+		}
 		.hero {
 			.content-wrapper {
 				.background {
@@ -301,7 +347,7 @@
 			width: 98%;
 			margin: 0 auto;
 			display: flex;
-			margin-bottom: 200px;
+			margin-bottom: 100px;
 			align-items: stretch;
 			.left {
 				height: auto;
@@ -361,7 +407,7 @@
 		}
 		.about {
 			width: 70%;
-			margin: auto;
+			margin: 100px auto 0 auto;
 			.top {
 				display: flex;
 				flex-direction: column;
@@ -397,13 +443,13 @@
 		}
 
 		.services {
-			margin: 100px 0;
+			margin: 0;
 			position: relative;
 			display: flex;
 			flex-direction: column;
 			img {
 				width: 100%;
-				margin-bottom: -1px;
+				margin-bottom: -2px;
 			}
 			.content {
 				width: 100%;
@@ -465,8 +511,18 @@
 				flex-direction: column;
 				width: 80%;
 				margin: auto;
-				margin-bottom: 24px;
+				padding-bottom: 24px;
+				padding-left: 24px;
+				position: relative;
+				.vr {
+					position: absolute;
+					left: 50%;
+					transform: translateX(-50%);
+					height: 100%;
+					border-left: 1px solid var(--green-400);
+				}
 				.tag {
+					margin-top: 100px;
 					margin-bottom: 16px;
 					p {
 						font-size: var(--fs-500);
@@ -484,11 +540,51 @@
 				}
 			}
 			.review-widget {
-				padding: 50px 0;
+				scroll-margin-top: 200px;
+				padding: 100px 0 50px 0;
 				background-color: var(--green-500);
 			}
+			.stats {
+				position: relative;
+				.vr {
+					position: absolute;
+					left: 50%;
+					transform: translateX(-50%);
+					height: 100%;
+					border-left: 1px solid var(--green-400);
+				}
+				.stats-grid {
+					display: grid;
+					grid-template-columns: repeat(2, 1fr);
+					gap: 20px;
+					padding-top: 50px;
+				}
+				.grid-item {
+					display: flex;
+					flex-direction: column;
+					align-items: center;
+					justify-content: center;
+					padding: 20px;
+					border-radius: 10px;
+				}
+				.number {
+					font-size: var(--fs-800);
+					font-weight: bold;
+					color: var(--black);
+				}
+				.text {
+					font-weight: 600;
+					font-size: var(--fs-600);
+					color: var(--black);
+					margin-top: 8px;
+					text-align: center;
+					.highlight {
+						color: var(--green-500);
+					}
+				}
+			}
 			.partners {
-				margin: 100px 0;
+				margin: 200px 0;
 				.text {
 					font-size: var(--fs-600);
 					width: 80%;
@@ -504,7 +600,37 @@
 				.partner-marquee {
 					padding: 50px 0;
 					background-color: var(--green-600);
+					position: relative;
+					img {
+						position: absolute;
+						top: 99%;
+						right: 0;
+						rotate: 180deg;
+						transform: scaleX(-1);
+					}
 				}
+			}
+		}
+		.contact {
+			.title {
+				h1 {
+					font-weight: 900;
+					font-size: var(--fs-600);
+					color: var(--green-500);
+					text-align: center;
+				}
+			}
+			.subtitle {
+				margin-top: 8px;
+				p {
+					font-size: var(--fs-500);
+					text-align: center;
+				}
+			}
+			.contact-cards {
+				display: flex;
+				justify-content: space-evenly;
+				margin-top: 50px;
 			}
 		}
 	}

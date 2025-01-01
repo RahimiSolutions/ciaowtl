@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import ArrowRight from '../../lib/icons/arrowRight.svelte';
-	import ArrowLeft from '../../lib/icons/arrowLeft.svelte';
+	import Arrow from '../../lib/icons/arrow.svelte';
 
 	import star from '$lib/icons/Star.svg';
 	import reviwerImage1 from '$lib/images/manOne.jpg';
@@ -74,8 +73,8 @@
 	</div>
 
 	<div class="controls">
-		<ArrowLeft onClick={prevReview} />
-		<ArrowRight onClick={nextReview} />
+		<Arrow onClick={prevReview} />
+		<Arrow onClick={nextReview} />
 	</div>
 	<div class="dots">
 		{#each reviews as _, index}

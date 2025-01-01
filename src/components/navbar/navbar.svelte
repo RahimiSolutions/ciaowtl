@@ -3,6 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
+	import { goto } from '$app/navigation';
 
 	let showTopMenu: boolean;
 	let activeItem = 'Home';
@@ -16,6 +17,11 @@
 		// const nearBottom = scrollY + windowHeight >= documentHeight - 800;
 		// Show the BookingCta only if scrolled past 500px from the top and not near the bottom
 		showTopMenu = past500px;
+	}
+
+	function handleClick(item: string, link: string) {
+		activeItem = item;
+		goto(link);
 	}
 
 	onMount(() => {
@@ -37,39 +43,30 @@
 					transition:fly={{ y: -50, delay: 300, duration: 600, easing: quintOut }}
 				>
 					<ul class="left-menu">
-						<li class:active={activeItem === 'Home'} on:click={() => (activeItem = 'Home')}>
+						<li class:active={activeItem === 'Home'} on:click={() => handleClick('Home', '/#home')}>
 							<a href="/#home">Home</a>
 						</li>
-						<li class:active={activeItem === 'Services'} on:click={() => (activeItem = 'Services')}>
+						<li class:active={activeItem === 'Services'} on:click={() => handleClick('Services', '/#services')}>
 							<a href="/#services">Services</a>
 						</li>
-						<li
-							class:active={activeItem === 'Containers'}
-							on:click={() => (activeItem = 'Containers')}
-						>
-							Containers
+						<li class:active={activeItem === 'Containers'} on:click={() => handleClick('Containers', '/#containers')}>
+							<a href="/#containers">Containers</a>
 						</li>
 					</ul>
 					<button class="cta"> Contact Us </button>
 				</nav>
 			{/if}
 		{:else}
-			<nav
-				class="top-menu"
-				transition:fly={{ y: -50, delay: 300, duration: 500, easing: quintOut }}
-			>
+			<nav class="top-menu" transition:fly={{ y: -50, delay: 0, duration: 500, easing: quintOut }}>
 				<ul class="left-menu">
-					<li class:active={activeItem === 'Home'} on:click={() => (activeItem = 'Home')}>
+					<li class:active={activeItem === 'Home'} on:click={() => handleClick('Home', '/#home')}>
 						<a href="/#home">Home</a>
 					</li>
-					<li class:active={activeItem === 'Services'} on:click={() => (activeItem = 'Services')}>
+					<li class:active={activeItem === 'Services'} on:click={() => handleClick('Services', '/#services')}>
 						<a href="/#services">Services</a>
 					</li>
-					<li
-						class:active={activeItem === 'Containers'}
-						on:click={() => (activeItem = 'Containers')}
-					>
-						Containers
+					<li class:active={activeItem === 'Containers'} on:click={() => handleClick('Containers', '/#containers')}>
+						<a href="/#containers">Containers</a>
 					</li>
 				</ul>
 				<button class="cta"> Contact Us </button>
@@ -95,7 +92,7 @@
 				margin: 0 25px;
 				list-style-position: inside;
 				border-radius: 12px;
-				font-size: 24px;
+				font-size: var(--fs-500);
 				list-style-type: none;
 				cursor: pointer;
 				a {

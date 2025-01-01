@@ -3,8 +3,7 @@
 	import TransportType from '../cards/transportType.svelte';
 	import { writable } from 'svelte/store';
 
-	import ArrowRight from '$lib/icons/arrowRight.svelte';
-	import ArrowLeft from '$lib/icons/arrowLeft.svelte';
+	import Arrow from '$lib/icons/arrow.svelte';
 
 	const services = [
 		{ number: '01', text: 'Truck' },
@@ -98,13 +97,13 @@
 	</div>
 	<div class="arrows">
 		<button on:click={prev} disabled={currentIndex === 0}>
-			<ArrowLeft width="64" fill="#fff" />
+			<Arrow width={64} fill="#fff" />
 		</button>
 		<button
 			on:click={next}
 			disabled={currentIndex === services.length - Math.floor(containerWidth / cardWidth)}
 		>
-			<ArrowRight width="64" fill="#fff" />
+			<Arrow width={64} fill="#fff" rotation={180}/>
 		</button>
 	</div>
 </div>

@@ -1,10 +1,16 @@
 <script>
+	import { goto } from '$app/navigation';
 	import manOne from '$lib/images/manOne.jpg';
 	import manTwo from '$lib/images/manTwo.jpg';
 	import womanOne from '$lib/images/womanOne.jpg';
+
+	function handleClick() {
+		goto('/#reviews');
+	}
 </script>
 
-<div class="container">
+<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+<div class="container" onclick={handleClick}>
 	<div class="images">
 		<div class="image" style="background-image: url({manOne});"></div>
 		<div class="image" style="background-image: url({manTwo});"></div>
@@ -24,6 +30,7 @@
 
 <style lang="scss">
 	.container {
+		cursor: pointer;
 		display: flex;
 		align-items: center;
 		height: 100px;
