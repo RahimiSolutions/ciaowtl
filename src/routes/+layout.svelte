@@ -72,7 +72,11 @@
 		/* Extra large, good for titles */
 		--fs-700: 24px;
 		/* 2X large, good for main headings */
-		--fs-800: clamp(4rem, 1.5714rem + 3.7946vw, 6.125rem);
+		--fs-800: clamp(3.5rem, 0.5rem + 4.6875vw, 6.125rem);
+
+		--fs-slogan:clamp(1.5rem, 0.6429rem + 1.3393vw, 2.25rem);
+
+
 
 		/* // MOBILE */
 		/* Smallest size, suitable for small print or tags */

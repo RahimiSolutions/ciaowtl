@@ -43,7 +43,9 @@
 <style lang="scss">
 	.card {
 		background-color: var(--green-200);
-		width: 20%;
+		width: clamp(18.75rem, 11.6071rem + 11.1607vw, 25rem);
+
+
 		height: 400px;
 		border-radius: 25px;
         position: relative;

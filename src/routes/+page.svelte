@@ -93,12 +93,13 @@
 								transition:fly={{ y: 50, delay: 300, duration: 500, easing: quintOut }}
 							>
 								<div class="main-heading">
-									<span class="top">Stress Free</span> <br />
-									<span class="bottom"
+									<div class="toptext">Stress Free</div> 
+									
+									<div class="bottomtext"
 										>Transport Services
 										<div class="sub-heading">
 											We operate globally, connecting major cities and remote locations alike
-										</div></span
+										</div></div
 									>
 								</div>
 							</div>
@@ -201,11 +202,11 @@
 
 			<div class="social-proof">
 				<div class="text">
-					<div class="tag"><p>You can trust us to deliver your shipment safely</p></div>
+					<div class="tag"><p>You can trust us to deliver your shipment <span class="bold">safely</span></p></div>
 					<div class="title">
 						<h1>
-							But dont take it from us<br />
-							<span class="bold">- Hear what our clients say</span>
+							Don’t just take our word for it<br />
+							<span class="bold">- Here’s what our clients have to say</span>
 						</h1>
 					</div>
 					<div class="vr"></div>
@@ -283,6 +284,7 @@
 			.content-wrapper {
 				.background {
 					position: relative;
+					max-width: 2400px;
 					width: 98%;
 					height: 90vh;
 					overflow: hidden;
@@ -317,14 +319,18 @@
 							font-size: var(--fs-800);
 							font-weight: 600;
 							color: var(--white);
-							.top {
+							display: flex;
+							flex-direction: column;
+							
+							.toptext {
 								backdrop-filter: blur(4px);
-								background-color: var(--blue-200);
+								background-color: rgba(67, 86, 100, 0.3);
 								border-radius: 25px 25px 0 0;
 								padding: 0 24px;
+								width: fit-content;
 							}
-							.bottom {
-								backdrop-filter: blur(4px);
+							.bottomtext {
+								backdrop-filter: blur(8px);
 								background-color: var(--blue-200);
 								border-radius: 0 25px 25px 25px;
 								padding: 0 24px;
@@ -344,6 +350,7 @@
 			}
 		}
 		.options {
+			max-width: 2400px;
 			width: 98%;
 			margin: 0 auto;
 			display: flex;
@@ -388,15 +395,16 @@
 						font-weight: 400;
 						text-transform: uppercase;
 						color: var(--green-500);
-						max-width: 40ch;
+						max-width: 60%;
 						text-align: end;
 					}
 					.text {
 						margin-top: 16px;
 						font-size: var(--fs-500);
+
 						font-weight: 400;
 						color: var(--black);
-						max-width: 50ch;
+						max-width: 60%;
 						text-align: end;
 					}
 					.button {
@@ -406,7 +414,8 @@
 			}
 		}
 		.about {
-			width: 70%;
+			width: 90%;
+			max-width: 1600px;
 			margin: 100px auto 0 auto;
 			.top {
 				display: flex;
@@ -472,7 +481,8 @@
 					}
 				}
 				.cards {
-					width: 80%;
+					width: 90%;
+					max-width: 1600px;
 					margin: 150px auto;
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
@@ -509,10 +519,9 @@
 			.text {
 				display: flex;
 				flex-direction: column;
-				width: 80%;
+				width: 100%;
 				margin: auto;
 				padding-bottom: 24px;
-				padding-left: 24px;
 				position: relative;
 				.vr {
 					position: absolute;
@@ -522,18 +531,37 @@
 					border-left: 1px solid var(--green-400);
 				}
 				.tag {
+					display: flex;
+					justify-content: end;
 					margin-top: 100px;
 					margin-bottom: 16px;
+					width: 50%;
 					p {
-						font-size: var(--fs-500);
-					}
-				}
-				.title {
-					h1 {
+						padding-right: 8px;
 						font-size: var(--fs-600);
 						color: var(--green-500);
 						font-weight: 500;
+						text-align: end;
 						.bold {
+							font-size: var(--fs-600);
+							color: var(--green-500);
+							font-weight: 900;
+						}
+					}
+				}
+				.title {
+					display: flex;
+					width: 50%;
+					transform: translateX(100%);
+					h1 {
+						padding-left: 8px;
+						text-align: start;
+						
+						font-weight: 400;
+						font-size: var(--fs-500);
+						.bold {
+							font-size: var(--fs-600);
+							color: var(--green-500);
 							font-weight: 900;
 						}
 					}
@@ -612,6 +640,7 @@
 			}
 		}
 		.contact {
+			
 			.title {
 				h1 {
 					font-weight: 900;
@@ -630,7 +659,9 @@
 			.contact-cards {
 				display: flex;
 				justify-content: space-evenly;
-				margin-top: 50px;
+				
+				max-width: 2400px;
+				margin: 50px auto;
 			}
 		}
 	}

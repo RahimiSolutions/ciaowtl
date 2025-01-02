@@ -35,7 +35,7 @@
 			<div class="sitemap">
 				<ul>
 					<li><a href="/#services">Services</a></li>
-					<li><a href="/">Reviews</a></li>
+					<li><a href="/#reviews">Reviews</a></li>
 					<li><a href="/">Containers</a></li>
 					<li><a href="/">Contact</a></li>
 				</ul>
@@ -91,22 +91,22 @@
 		.notch {
 			position: absolute;
 			top: -1px;
-			right: 25%;
+			right: 10%;
 			.container {
 				position: relative;
 
 				img {
-					width: 150%;
+					width: clamp(25rem, 0rem + 39.0625vw, 46.875rem);
 				}
 				.slogan {
 					position: absolute;
 					top: 25%;
 					left: 50%;
-					transform: translateX(-25%);
+					transform: translateX(-50%);
 					text-align: center;
 					text-transform: uppercase;
 					font-weight: 900;
-					font-size: var(--fs-600);
+					font-size: var(--fs-slogan);
 					width: 100%;
 					color: var(--black);
 				}

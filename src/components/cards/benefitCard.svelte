@@ -20,7 +20,9 @@
 
 <style lang="scss">
 	.card {
-		width: 400px;
+		width: clamp(18.75rem, 11.6071rem + 11.1607vw, 25rem);
+
+
 		height: 450px;
 		border-radius: 25px;
 		overflow: hidden;

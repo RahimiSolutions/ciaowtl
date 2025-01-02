@@ -93,7 +93,7 @@
 
 <style lang="scss">
 	.card {
-		width: 600px;
+		width: clamp(25rem, 10.7143rem + 22.3214vw, 37.5rem);
 		height: 400px;
 		border-radius: 25px;
 		perspective: 1000px;

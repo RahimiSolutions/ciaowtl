@@ -32,6 +32,7 @@
 	.container {
 		cursor: pointer;
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
 		height: 100px;
 
