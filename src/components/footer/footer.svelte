@@ -3,6 +3,11 @@
 	import logo from '$lib/images/logo.png';
 	import backToTop from '$lib/images/ToTopNotch.svg';
 	import Arrow from '$lib/icons/arrow.svelte';
+
+	import facebook from '$lib/icons/facebook.svg';
+	import instagram from '$lib/icons/instagram.svg';
+	import linkedin from '$lib/icons/linkedin.svg';
+	import whatsapp from '$lib/icons/whatsapp.svg';
 </script>
 
 <footer>
@@ -13,15 +18,15 @@
 		</div>
 	</div>
 	<div class="logo">
-		<img src={logo} alt="logo Ciao World Transport & Logistics" />
+		<a href="/#top"><img src={logo} alt="logo Ciao World Transport & Logistics" /></a>
 	</div>
 	<div class="content">
 		<div class="left">
 			<div class="contact">
 				<h2>Contact Us</h2>
 				<ul>
-					<li>info@ciao-wtl.com</li>
-					<li>+49 4075 695565</li>
+					<li><a href="mailto:info@ciao-wtl.com" target="_blank">info@ciao-wtl.com</a></li>
+					<li><a href="tel:+494075695565" target="_blank">+49 4075 695565</a></li>
 				</ul>
 			</div>
 			<div class="business-hours">
@@ -36,14 +41,14 @@
 				<ul>
 					<li><a href="/#services">Services</a></li>
 					<li><a href="/#reviews">Reviews</a></li>
-					<li><a href="/">Containers</a></li>
-					<li><a href="/">Contact</a></li>
+					<li><a href="/#containers">Containers</a></li>
+					<li><a href="/#contact">Contact</a></li>
 				</ul>
 			</div>
 			<div class="links">
 				<ul>
-					<li><a href="/">Get a Quote</a></li>
-					<li><a href="/">Imprint</a></li>
+					<li><a href="https://wa.me/4917657966211" target="_blank">Get a Quote</a></li>
+					<li><a href="/imprint">Imprint</a></li>
 				</ul>
 			</div>
 		</div>
@@ -55,26 +60,50 @@
 		</div>
 		<div class="right">
 			<div class="back-to-top">
-			  <div class="to-top-notch">
-				<img src={backToTop} alt="" />
-			  </div>
-			  <div class="content">
-				<div class="arrow">
-				  <Arrow width={36} fill="#000" rotation={90} onClick={() => window.scrollTo(0, 0)} />
+				<div class="to-top-notch">
+					<img src={backToTop} alt="" />
 				</div>
-				<div class="text">
-				  <p>Back To Top</p>
+				<div class="content">
+					<div class="arrow">
+						<Arrow width={36} fill="#000" rotation={90} onClick={() => window.scrollTo(0, 0)} />
+					</div>
+					<div class="text">
+						<p>Back To Top</p>
+					</div>
 				</div>
-			  </div>
 			</div>
-			<div class="socials"></div>
-		  </div>
+			<div class="socials">
+				<ul>
+					<li>
+						<a
+							href="https://www.facebook.com/profile.php?id=100095520884839&locale=nb_NO"
+							target="_blank"><img src={facebook} alt="facebook icon" /></a
+						>
+					</li>
+					<li>
+						<a href="https://www.instagram.com/ciao_wtl/" target="_blank"
+							><img src={instagram} alt="instagram icon" /></a
+						>
+					</li>
+					<li>
+						<a
+							href="https://www.linkedin.com/company/ciao-world-transport-logistics/"
+							target="_blank"><img src={linkedin} alt="linkedin icon" /></a
+						>
+					</li>
+					<li>
+						<a href="https://wa.me/4917657966211" target="_blank"
+							><img src={whatsapp} alt="whatsapp icon" /></a
+						>
+					</li>
+				</ul>
+			</div>
+		</div>
 	</div>
 </footer>
 
 <style lang="scss">
 	footer {
-
 		border-radius: 50px;
 		background-color: var(--green-600);
 		color: var(--white);
@@ -170,7 +199,6 @@
 							font-size: var(--fs-500);
 							list-style-type: none;
 							margin-bottom: 16px;
-							
 						}
 					}
 				}
@@ -186,7 +214,7 @@
 				}
 			}
 		}
-		a{
+		a {
 			color: var(--white);
 			text-decoration: none;
 		}
@@ -215,6 +243,7 @@
 					justify-content: center;
 					width: fit-content;
 					margin: 0 auto;
+					width: 70%;
 
 					.to-top-notch {
 						img {
@@ -226,7 +255,8 @@
 						}
 					}
 
-					.content { cursor: pointer;
+					.content {
+						cursor: pointer;
 						position: absolute;
 						top: 25%;
 						left: 50%;
@@ -254,6 +284,22 @@
 					}
 				}
 				.socials {
+					width: 30%;
+					ul {
+						height: 100%;
+						align-items: center;
+						justify-content: space-evenly;
+						display: flex;
+						li {
+							list-style-type: none;
+							a {
+								img {
+									width: 48px;
+									height: 48px;
+								}
+							}
+						}
+					}
 				}
 			}
 		}

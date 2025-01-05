@@ -24,6 +24,7 @@
 	import LogoMarquee from '../components/containers/LogoMarquee.svelte';
 	import cornerNotchGreen from '$lib/images/corner-notch-green.svg';
 	import ContactCard from '../components/cards/contactCard.svelte';
+	import ContainerCarousel from '../components/containers/containerCarousel.svelte';
 
 	let lenis: Lenis | null = null;
 	let notches = false;
@@ -93,14 +94,14 @@
 								transition:fly={{ y: 50, delay: 300, duration: 500, easing: quintOut }}
 							>
 								<div class="main-heading">
-									<div class="toptext">Stress Free</div> 
-									
-									<div class="bottomtext"
-										>Transport Services
+									<div class="toptext">Stress Free</div>
+
+									<div class="bottomtext">
+										Transport Services
 										<div class="sub-heading">
 											We operate globally, connecting major cities and remote locations alike
-										</div></div
-									>
+										</div>
+									</div>
 								</div>
 							</div>
 						{/if}
@@ -133,7 +134,7 @@
 							<Button
 								text="Request a Quote"
 								borderRadius="5px"
-								onClick="https://wa.me/4917657966211"
+								link="https://wa.me/4917657966211"
 							/>
 						</div>
 					</div>
@@ -165,7 +166,7 @@
 					/>
 				</div>
 				<div class="button">
-					<Button text="Learn More" borderRadius="5px" onClick="https://wa.me/4917657966211" />
+					<Button text="Learn More" borderRadius="5px" link="https://wa.me/4917657966211" />
 				</div>
 			</div>
 
@@ -202,7 +203,9 @@
 
 			<div class="social-proof">
 				<div class="text">
-					<div class="tag"><p>You can trust us to deliver your shipment <span class="bold">safely</span></p></div>
+					<div class="tag">
+						<p>You can trust us to deliver your shipment <span class="bold">safely</span></p>
+					</div>
 					<div class="title">
 						<h1>
 							Don’t just take our word for it<br />
@@ -258,16 +261,20 @@
 						<img src={cornerNotchGreen} alt="" />
 					</div>
 				</div>
+			</div>
 
-				<div class="contact" id="contact">
-					<div class="title"><h1>Contact our friendly team</h1></div>
-					<div class="subtitle"><p>Let us know how we can help</p></div>
+			<div class="containers" id="containers">
+				<ContainerCarousel />
+			</div>
 
-					<div class="contact-cards">
-						<ContactCard type="email" />
-						<ContactCard type="address" />
-						<ContactCard type="phone" />
-					</div>
+			<div class="contact" id="contact">
+				<div class="title"><h1>Contact our friendly team</h1></div>
+				<div class="subtitle"><p>Let us know how we can help</p></div>
+
+				<div class="contact-cards">
+					<ContactCard type="email" />
+					<ContactCard type="address" />
+					<ContactCard type="phone" />
 				</div>
 			</div>
 		</div>
@@ -321,7 +328,7 @@
 							color: var(--white);
 							display: flex;
 							flex-direction: column;
-							
+
 							.toptext {
 								backdrop-filter: blur(4px);
 								background-color: rgba(67, 86, 100, 0.3);
@@ -556,7 +563,7 @@
 					h1 {
 						padding-left: 8px;
 						text-align: start;
-						
+
 						font-weight: 400;
 						font-size: var(--fs-500);
 						.bold {
@@ -640,7 +647,7 @@
 			}
 		}
 		.contact {
-			
+			scroll-margin-top: 200px;
 			.title {
 				h1 {
 					font-weight: 900;
@@ -659,7 +666,7 @@
 			.contact-cards {
 				display: flex;
 				justify-content: space-evenly;
-				
+
 				max-width: 2400px;
 				margin: 50px auto;
 			}

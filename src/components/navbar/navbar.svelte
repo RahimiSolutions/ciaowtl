@@ -13,7 +13,7 @@
 	let closed = true;
 
 	function handleMobileMenuClick() {
-		closed = !isMenuOpen; 
+		closed = !isMenuOpen;
 		console.log(closed ? 'closed' : 'open');
 	}
 
@@ -90,7 +90,9 @@
 						{/if}
 					</div>
 
-					<button class="cta"> Contact Us </button>
+					<button class="cta" on:click={() => handleClick('', '/#contact')}>
+						<a href="/#contact">Contact Us</a>
+					</button>
 				</nav>
 			{/if}
 		{:else}
@@ -112,7 +114,8 @@
 						<a href="/#containers">Containers</a>
 					</li>
 				</ul>
-				<button class="cta"> Contact Us </button>
+				<button class="cta" on:click={() => handleClick('', '/#contact')}>
+					<a href="/#contact">Contact Us</a></button>
 			</nav>
 		{/if}
 	{/if}
@@ -143,7 +146,9 @@
 							<a href="/#containers">Containers</a>
 						</li>
 					</ul>
-					<button class="cta"> Contact Us </button>
+					<button class="cta" on:click={() => handleClick('', '/#contact')}>
+						<a href="/#contact">Contact Us</a>
+					</button>
 				</nav>
 			{/if}
 		{:else}
@@ -165,7 +170,11 @@
 						<a href="/#containers">Containers</a>
 					</li>
 				</ul>
-				<button class="cta"> Contact Us </button>
+				<button class="cta" on:click={() => handleClick('', '/#contact')}>
+					<a href="/#contact">
+						Contact Us
+					</a>
+				</button>
 			</nav>
 		{/if}
 	{/if}
@@ -219,6 +228,10 @@
 			cursor: pointer;
 			font-weight: 600;
 			margin: 0 24px;
+			a {
+				text-decoration: none;
+				color: var(--white);
+			}
 		}
 	}
 	.hero-menu-1024 {
@@ -237,7 +250,7 @@
 			position: relative;
 			width: 200px;
 			margin: 0 24px;
-			
+
 			display: flex;
 			justify-content: start;
 
@@ -359,6 +372,10 @@
 			margin: 0 24px;
 			height: 64px;
 			width: 200px;
+			a {
+				text-decoration: none;
+				color: var(--white);
+			}
 		}
 	}
 	.top-menu {
@@ -413,6 +430,10 @@
 			cursor: pointer;
 			font-weight: 600;
 			margin: 0 24px;
+			a {
+				text-decoration: none;
+				color: var(--white);
+			}
 		}
 	}
 </style>

@@ -74,7 +74,7 @@
 		/* 2X large, good for main headings */
 		--fs-800: clamp(3.5rem, 0.5rem + 4.6875vw, 6.125rem);
 
-		--fs-slogan:clamp(1.5rem, 0.6429rem + 1.3393vw, 2.25rem);
+		--fs-slogan:clamp(1.5rem, 0.6429rem + 1.3393vw, 2.25rem); 
 
 
 

@@ -1,7 +1,7 @@
 <script>
 	import { goto } from '$app/navigation';
 
-	let { bgColorHover = '#f5f5f5', text = 'text', link = '', borderRadius = '0px', borderWidth = '0px', onClick} = $props();
+	let { bgColorHover = '#f5f5f5', text = 'text', link = '', borderRadius = '0px', borderWidth = '0px', onClick = () => {} } = $props();
 	
 
 	function handleClick() {
