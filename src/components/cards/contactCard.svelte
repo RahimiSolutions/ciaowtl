@@ -6,47 +6,49 @@
 	import geo from '$lib/icons/geo.svg';
 
 	let { type } = $props();
-	let actionText = '';
-	let action = '';
-	let title = '';
-	let text = '';
-	let icon = '';
+	let state = $state({
+		actionText: '',
+		action: '',
+		title: '',
+		text: '',
+		icon: ''
+	});
 
 	if (type === 'email') {
-		title = 'Reach Out';
-		text = 'We’re here to help';
-		actionText = 'info@ciao-wtl.com';
-		action = 'mailto:info@ciao-wtl.com';
-		icon = chatBubbles;
+		state.title = 'Reach Out';
+		state.text = 'We’re here to help';
+		state.actionText = 'info@ciao-wtl.com';
+		state.action = 'mailto:info@ciao-wtl.com';
+		state.icon = chatBubbles;
 	} else if (type === 'phone') {
-		title = 'Call Us';
-		text = 'Mon-Fri from 8am to 5pm';
-		actionText = '+49 4075 695565';
-		action = 'tel:+494075695565';
-		icon = phone;
+		state.title = 'Call Us';
+		state.text = 'Mon-Fri from 8am to 5pm';
+		state.actionText = '+49 4075 695565';
+		state.action = 'tel:+494075695565';
+		state.icon = phone;
 	} else if (type === 'address') {
-		title = 'Visit Us';
-		text = 'Visit our offices in Hamburg';
-		actionText = 'View on Google Maps';
-		action = 'https://maps.app.goo.gl/4e4pP2iXDDNg6Nvb6';
-		icon = geo;
+		state.title = 'Visit Us';
+		state.text = 'Visit our offices in Hamburg';
+		state.actionText = 'View on Google Maps';
+		state.action = 'https://maps.app.goo.gl/4e4pP2iXDDNg6Nvb6';
+		state.icon = geo;
 	}
 </script>
 
 <div class="card">
 	<img class="notch" src={squareCorner} alt="Square corner notch scalable vector graphic" />
-	<img class="icon" src={icon} alt="icon for contact card" />
+	<img class="icon" src={state.icon} alt="icon for contact card" />
 	<div class="content">
-		<div class="title"><h2>{title}</h2></div>
-		<div class="text"><p>{text}</p></div>
-		<div class="actionText"><a href={action} target="_blank">{actionText}</a></div>
+		<div class="title"><h2>{state.title}</h2></div>
+		<div class="text"><p>{state.text}</p></div>
+		<div class="actionText"><a href={state.action} target="_blank">{state.actionText}</a></div>
 	</div>
 </div>
 
 <style lang="scss">
 	.card {
 		background-color: var(--green-200);
-		width: clamp(18.75rem, 11.6071rem + 11.1607vw, 25rem);
+		width: clamp(18.75rem, 15.1786rem + 5.5804vw, 21.875rem);
 
 		height: 400px;
 		border-radius: 25px;

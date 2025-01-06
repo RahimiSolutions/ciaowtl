@@ -27,7 +27,7 @@
 <svelte:head>
 	<title>Ciao World Transport & Logistics</title>
 	<meta name="description" content="FILL IN DESCRIPTION" />
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index, follow" />
 	<meta name="content-language" content="en" />
 	<meta name="keywords" content="FILL IN KEYWORDS" />
@@ -64,15 +64,15 @@
 		/* Smallest size, suitable for small print or tags */
 		--fs-300: 12px;
 		/* Small text, good for body copy or less emphasized text */
-		--fs-400: clamp(1rem, 0.7143rem + 0.4464vw, 1.25rem);
+		--fs-400: clamp(1rem, 0.7143rem + 0.4464vw, 1rem);
 		/* Medium text, good for body copy or subtitles */
-		--fs-500: clamp(1.25rem, 0.9643rem + 0.4464vw, 1.5rem);
+		--fs-500: clamp(1.25rem, 0.9643rem + 0.4464vw, 1.25rem);
 		/* Large text, good for subtitles or small headings */
 		--fs-600: clamp(2rem, 1.7143rem + 0.4464vw, 2.25rem);
 		/* Extra large, good for titles */
 		--fs-700: 24px;
 		/* 2X large, good for main headings */
-		--fs-800: clamp(3.5rem, 0.5rem + 4.6875vw, 6.125rem);
+		--fs-800: clamp(3.75rem, 2.3214rem + 2.2321vw, 5rem);
 
 		--fs-slogan:clamp(1.5rem, 0.6429rem + 1.3393vw, 2.25rem); 
 

@@ -243,7 +243,7 @@
 					justify-content: center;
 					width: fit-content;
 					margin: 0 auto;
-					width: 70%;
+					width: 100%;
 
 					.to-top-notch {
 						img {
@@ -284,7 +284,7 @@
 					}
 				}
 				.socials {
-					width: 30%;
+					width: 100%;
 					ul {
 						height: 100%;
 						align-items: center;

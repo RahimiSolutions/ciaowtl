@@ -93,8 +93,8 @@
 
 <style lang="scss">
 	.card {
-		width: clamp(25rem, 10.7143rem + 22.3214vw, 37.5rem);
-		height: 400px;
+		width: clamp(23.4375rem, 14.5089rem + 13.9509vw, 31.25rem);
+		height: 325px;
 		border-radius: 25px;
 		perspective: 1000px;
 
@@ -150,6 +150,8 @@
 						font-size: var(--fs-600);
 						font-weight: bold;
 						text-align: center;
+						width: 100%;
+
 					}
 
 					.corner {
@@ -215,6 +217,7 @@
 						position: absolute;
 						top: 20px;
 						left: 50%;
+						width: 100%;
 						transform: translateX(-50%);
 						color: white;
 						font-size: var(--fs-600);

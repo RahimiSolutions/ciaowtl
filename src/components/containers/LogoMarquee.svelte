@@ -72,16 +72,16 @@
 		max-height: var(--imgSize);
 	}
 
-	/* @media (prefers-reduced-motion: reduce) {
+	@media (prefers-reduced-motion: reduce) {
 		.marquee__group {
 			animation-play-state: paused;
 		}
-	} */
+	} 
 
-	.marquee--reverse .marquee__group {
+	/* .marquee--reverse .marquee__group {
 		animation-direction: reverse;
 		animation-delay: -3s;
-	}
+	} */
 
 	@keyframes scroll-x {
 		from {

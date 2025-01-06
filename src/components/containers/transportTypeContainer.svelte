@@ -85,6 +85,7 @@
 			on:mousemove={handleMouseMove}
 			on:mouseup={handleMouseUp}
 			on:mouseleave={handleMouseUp}
+
 			style="transform: translateX({$position}px);"
 		>
 			{#each services as service}
@@ -97,13 +98,13 @@
 	</div>
 	<div class="arrows">
 		<button on:click={prev} disabled={currentIndex === 0}>
-			<Arrow width={64} fill="#fff" />
+			<Arrow width={48} fill="#fff" />
 		</button>
 		<button
 			on:click={next}
 			disabled={currentIndex === services.length - Math.floor(containerWidth / cardWidth)}
 		>
-			<Arrow width={64} fill="#fff" rotation={180}/>
+			<Arrow width={48} fill="#fff" rotation={180}/>
 		</button>
 	</div>
 </div>
@@ -133,7 +134,7 @@
 		top: 100%;
 		button {
 			margin: 0 8px;
-			padding: 8px 16px;
+			padding: 4px 8px;
 			background-color: var(--green-500);
 			color: var(--white);
 			border: none;

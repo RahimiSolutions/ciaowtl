@@ -115,7 +115,8 @@
 					</li>
 				</ul>
 				<button class="cta" on:click={() => handleClick('', '/#contact')}>
-					<a href="/#contact">Contact Us</a></button>
+					<a href="/#contact">Contact Us</a></button
+				>
 			</nav>
 		{/if}
 	{/if}
@@ -171,9 +172,7 @@
 					</li>
 				</ul>
 				<button class="cta" on:click={() => handleClick('', '/#contact')}>
-					<a href="/#contact">
-						Contact Us
-					</a>
+					<a href="/#contact"> Contact Us </a>
 				</button>
 			</nav>
 		{/if}
@@ -194,13 +193,14 @@
 		.left-menu {
 			display: flex;
 			li {
-				padding: 16px 36px 16px 24px;
+				padding: 12px 16px 12px 16px;
 				margin: 0 24px;
 				list-style-position: inside;
 				border-radius: 12px;
 				font-size: var(--fs-500);
 				list-style-type: none;
 				cursor: pointer;
+				transition: background-color 0.3s ease-in-out;
 				a {
 					text-decoration: none;
 					color: var(--black);
@@ -222,8 +222,8 @@
 		.cta {
 			background-color: var(--black);
 			color: var(--white);
-			padding: 16px 36px;
-			font-size: 24px;
+			padding: 0px 24px;
+			font-size: var(--fs-500);
 			border-radius: 12px;
 			cursor: pointer;
 			font-weight: 600;
@@ -237,7 +237,6 @@
 	.hero-menu-1024 {
 		display: flex;
 		width: 90%;
-		height: 75px;
 		align-items: center;
 		justify-content: space-between;
 		left: 50%;
@@ -248,16 +247,17 @@
 
 		.dropdown {
 			position: relative;
-			width: 200px;
+			width: 160px;
+			height: 48px;
 			margin: 0 24px;
-
-			display: flex;
-			justify-content: start;
 
 			.dropdown-closed {
 				width: 100%;
+				height: 100%;
+				display: flex;
+				justify-content: start;
+				align-items: center;
 				background-color: var(--black);
-				padding: 16px 36px;
 				border-radius: 12px;
 				#checkbox {
 					display: none;
@@ -265,11 +265,11 @@
 
 				.toggle {
 					position: relative;
-					width: 40px;
+					width: 32px;
 					cursor: pointer;
 					margin: auto;
 					display: block;
-					height: calc(4px * 3 + 11px * 2);
+					height: calc(4px * 3 + 6px * 2); // Reduced from 11px to 6px
 
 					.bar {
 						position: absolute;
@@ -283,7 +283,7 @@
 						transition: none 0.35s cubic-bezier(0.5, -0.35, 0.35, 1.5) 0s;
 
 						&--top {
-							bottom: calc(50% + 11px + 4px / 2);
+							bottom: calc(50% + 6px + 4px / 2); // Reduced from 11px to 6px
 							transition-property: bottom, transform;
 							transition-delay: calc(0s + 0.35s), 0s;
 						}
@@ -295,7 +295,7 @@
 						}
 
 						&--bottom {
-							top: calc(50% + 11px + 4px / 2);
+							top: calc(50% + 6px + 4px / 2); // Reduced from 11px to 6px
 							transition-property: top, transform;
 							transition-delay: calc(0s + 0.35s), 0s;
 						}
@@ -330,17 +330,18 @@
 				position: absolute;
 				background-color: var(--white);
 				border-radius: 12px;
-				top: 72px;
+				top: 50px;
 				left: 0px;
 				li {
-					padding: 16px 36px 16px 24px;
+					padding: 12px 16px 12px 16px;
 					margin: 0;
 					list-style-position: inside;
-					border-radius: 12px;
+					border-radius: 8px;
 					font-size: var(--fs-500);
 					list-style-type: none;
-					width: 200px;
+					width: 160px;
 					cursor: pointer;
+					transition: background-color 0.3s ease-in-out;
 					a {
 						text-decoration: none;
 						color: var(--black);
@@ -364,14 +365,15 @@
 		.cta {
 			background-color: var(--black);
 			color: var(--white);
-			padding: 16px 36px;
-			font-size: 24px;
+			padding: 0px 24px;
+			font-size: var(--fs-500);
 			border-radius: 12px;
 			cursor: pointer;
 			font-weight: 600;
 			margin: 0 24px;
-			height: 64px;
-			width: 200px;
+			height: 48px;
+			width: 160px;
+			border: none;
 			a {
 				text-decoration: none;
 				color: var(--white);
@@ -382,13 +384,14 @@
 		margin-top: 0;
 		top: 0;
 		background-color: var(--white);
-		padding: 24px;
+		padding: 16px 12px;
 		border-radius: 0 0 50px 50px;
 		width: 90%;
 		position: fixed;
 		z-index: 999;
 		left: 50%;
 		transform: translateX(-50%);
+		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.4);
 
 		display: flex;
 		justify-content: space-between;
@@ -396,13 +399,14 @@
 		.left-menu {
 			display: flex;
 			li {
-				padding: 16px 36px 16px 24px;
+				padding: 12px 16px 12px 16px;
 				margin: 0 24px;
 				list-style-position: inside;
 				border-radius: 12px;
-				font-size: 24px;
+				font-size: var(--fs-500);
 				list-style-type: none;
 				cursor: pointer;
+				transition: background-color 0.3s ease-in-out;
 				a {
 					text-decoration: none;
 					color: var(--black);
@@ -424,8 +428,8 @@
 		.cta {
 			background-color: var(--black);
 			color: var(--white);
-			padding: 16px 36px;
-			font-size: 24px;
+			padding: 0px 24px;
+			font-size: var(--fs-500);
 			border-radius: 12px;
 			cursor: pointer;
 			font-weight: 600;

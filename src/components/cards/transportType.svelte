@@ -63,8 +63,8 @@
 <style>
 	.card {
 		position: relative;
-		width: 400px;
-		height: 300px;
+		width: 350px;
+		height: 250px;
 		border-radius: 25px;
 		overflow: hidden;
 		color: white;

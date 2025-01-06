@@ -14,16 +14,14 @@
 		<h2>{@html title}</h2>
 	</div>
 	<div class="content">
-		<div class="text">{text}</div>
+		<div class="text">{@html text}</div>
 	</div>
 </div>
 
 <style lang="scss">
 	.card {
-		width: clamp(18.75rem, 11.6071rem + 11.1607vw, 25rem);
-
-
-		height: 450px;
+		width: clamp(15.625rem, 4.9107rem + 16.7411vw, 25rem);
+		height: clamp(18.75rem, 11.6071rem + 11.1607vw, 25rem);
 		border-radius: 25px;
 		overflow: hidden;
 		position: relative;
@@ -64,7 +62,7 @@
 		.top {
 			z-index: 3;
 			img {
-				width: 300px;
+				width: clamp(15.625rem, 12.0536rem + 5.5804vw, 18.75rem);
 				top: -1px;
 				left: -1px;
 				position: absolute;
@@ -86,10 +84,9 @@
 			display: flex;
 			justify-content: center;
 			.text {
-				font-size: var(--fs-500);
+				font-size: var(--fs-400);
 				color: white;
 				text-align: center;
-				width: 20ch;
 			}
 		}
 	}

@@ -150,15 +150,15 @@
 				<div class="toggle-label {!$useMetric ? 'active' : 'inactive'}">Imperial</div>
 			</div>
 			{#key containers[currentIndex]}
-				<div class="content"  >
-					<div class="image">
+				<div class="content" in:fade={{ duration: 300 }} out:fade={{ duration: 300 }} >
+					<div class="image" in:fly={{ y: 20, duration: 300, easing: cubicOut }}>
 						<img
 							src={containers[currentIndex].image}
 							alt={containers[currentIndex].title}
-							width="600"
+							width="475"
 						/>
 					</div>
-					<div class="measurements">
+					<div class="measurements" in:fly={{ x: 20, duration: 300, easing: cubicOut }}>
 						{#if $useMetric}
 							<div class="external">
 								<div class="title">
@@ -166,17 +166,17 @@
 									<ul>
 										<li>
 											<p>
-												{containers[currentIndex].metricMeasurments.externalMeasurements.height}m
+												Height: {containers[currentIndex].metricMeasurments.externalMeasurements.height}m
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].metricMeasurments.externalMeasurements.width}m
+												Width: {containers[currentIndex].metricMeasurments.externalMeasurements.width}m
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].metricMeasurments.externalMeasurements.length}m
+												Length: {containers[currentIndex].metricMeasurments.externalMeasurements.length}m
 											</p>
 										</li>
 									</ul>
@@ -188,17 +188,17 @@
 									<ul>
 										<li>
 											<p>
-												{containers[currentIndex].metricMeasurments.internalMeasurements.height}m
+												Height: {containers[currentIndex].metricMeasurments.internalMeasurements.height}m
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].metricMeasurments.internalMeasurements.width}m
+												Width: {containers[currentIndex].metricMeasurments.internalMeasurements.width}m
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].metricMeasurments.internalMeasurements.length}m
+												Length: {containers[currentIndex].metricMeasurments.internalMeasurements.length}m
 											</p>
 										</li>
 									</ul>
@@ -208,8 +208,8 @@
 								<div class="title">
 									<h3>Door Opening:</h3>
 									<ul>
-										<li><p>{containers[currentIndex].metricMeasurments.doorOpening.height}m</p></li>
-										<li><p>{containers[currentIndex].metricMeasurments.doorOpening.width}m</p></li>
+										<li><p>Height: {containers[currentIndex].metricMeasurments.doorOpening.height}m</p></li>
+										<li><p>Width: {containers[currentIndex].metricMeasurments.doorOpening.width}m</p></li>
 									</ul>
 								</div>
 							</div>
@@ -220,18 +220,18 @@
 									<ul>
 										<li>
 											<p>
-												{containers[currentIndex].impericalMeasurements.externalMeasurements.height}
+												Height: {containers[currentIndex].impericalMeasurements.externalMeasurements.height}
 												ft
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].impericalMeasurements.externalMeasurements.width} ft
+												Width: {containers[currentIndex].impericalMeasurements.externalMeasurements.width} ft
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].impericalMeasurements.externalMeasurements.length}
+												Length: {containers[currentIndex].impericalMeasurements.externalMeasurements.length}
 												ft
 											</p>
 										</li>
@@ -244,18 +244,18 @@
 									<ul>
 										<li>
 											<p>
-												{containers[currentIndex].impericalMeasurements.internalMeasurements.height}
+												Height: {containers[currentIndex].impericalMeasurements.internalMeasurements.height}
 												ft
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].impericalMeasurements.internalMeasurements.width} ft
+												Width: {containers[currentIndex].impericalMeasurements.internalMeasurements.width} ft
 											</p>
 										</li>
 										<li>
 											<p>
-												{containers[currentIndex].impericalMeasurements.internalMeasurements.length}
+												Length: {containers[currentIndex].impericalMeasurements.internalMeasurements.length}
 												ft
 											</p>
 										</li>
@@ -267,10 +267,10 @@
 									<h3>Door Opening:</h3>
 									<ul>
 										<li>
-											<p>{containers[currentIndex].impericalMeasurements.doorOpening.height} ft</p>
+											<p>Height: {containers[currentIndex].impericalMeasurements.doorOpening.height} ft</p>
 										</li>
 										<li>
-											<p>{containers[currentIndex].impericalMeasurements.doorOpening.width} ft</p>
+											<p>Width: {containers[currentIndex].impericalMeasurements.doorOpening.width} ft</p>
 										</li>
 									</ul>
 								</div>
@@ -285,7 +285,7 @@
 
 <style lang="scss">
 	.carousel {
-		margin: 150px auto;
+		margin: 150px auto 100px auto;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
@@ -322,10 +322,7 @@
 			height: 40px;
 			cursor: pointer;
 			user-select: none;
-
-			input {
-				display: none;
-			}
+ 
 
 			.toggle-label {
 				flex: 1;
@@ -403,8 +400,8 @@
 				}
 
 				.external {
-					top: 10%;
-					left: -50%;
+					top: 5%;
+					left: -60%;
 				}
 				.internal {
 					top: 80%;
@@ -412,7 +409,7 @@
 				}
 				.door {
 					top: 50%;
-					right: -25%;
+					right: -35%;
 				}
 			}
 		}

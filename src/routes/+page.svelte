@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { asClassComponent } from 'svelte/legacy';
 	import Lenis from 'lenis';
 	import 'lenis/dist/lenis.css';
 	import { onDestroy, onMount } from 'svelte';
@@ -151,17 +150,17 @@
 				<div class="content">
 					<BenefitCard
 						title="Reliable<br/>Partner"
-						text="You can trust us to deliver on time, every time"
+						text="You can trust us to deliver<br/> on time, every time"
 						imageUrl={partner}
 					/>
 					<BenefitCard
 						title="Multilingual<br/>Expertise"
-						text=" Communication without barriers"
+						text=" Communication without<br/> barriers"
 						imageUrl={multilingual}
 					/>
 					<BenefitCard
 						title="Seamless<br/>Process"
-						text="We handle the complexities so you don’t have to"
+						text="We handle the complexities<br/> so you don’t have to"
 						imageUrl={processPicture}
 					/>
 				</div>
@@ -265,6 +264,18 @@
 
 			<div class="containers" id="containers">
 				<ContainerCarousel />
+				<div class="content">
+					<div class="subtitle">
+						<h2>Can’t find the right container?</h2>
+					</div>
+					<div class="text">
+						<p>
+							<span class="highlight">Don't worry</span> — we have a container for every need. Reach out, and together we'll find
+							the ideal solution for you!
+						</p>
+					</div>
+					<Button text="Explore Options" borderRadius="5px" link="https://wa.me/4917657966211" />
+				</div>
 			</div>
 
 			<div class="contact" id="contact">
@@ -291,12 +302,12 @@
 			.content-wrapper {
 				.background {
 					position: relative;
-					max-width: 2400px;
+					max-width: 2250px;
 					width: 98%;
 					height: 90vh;
 					overflow: hidden;
 					border-radius: 50px;
-					margin: 25px auto 25px auto;
+					margin: 2vh auto 25px auto;
 					.bg-image {
 						position: relative;
 						height: 100%;
@@ -357,7 +368,7 @@
 			}
 		}
 		.options {
-			max-width: 2400px;
+			max-width: 2250px;
 			width: 98%;
 			margin: 0 auto;
 			display: flex;
@@ -365,7 +376,7 @@
 			align-items: stretch;
 			.left {
 				height: auto;
-				width: 30%;
+				width: 35%;
 				padding: 0 50px;
 				display: flex;
 				flex-direction: column;
@@ -384,7 +395,7 @@
 				}
 			}
 			.right {
-				width: 70%;
+				width: 65%;
 				display: flex;
 				flex-direction: column;
 				justify-content: start;
@@ -421,7 +432,7 @@
 			}
 		}
 		.about {
-			width: 90%;
+			width: 80%;
 			max-width: 1600px;
 			margin: 100px auto 0 auto;
 			.top {
@@ -646,8 +657,40 @@
 				}
 			}
 		}
+
+		.containers {
+			margin-bottom: 150px;
+			scroll-margin-top: 100px;
+			.content{
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				.subtitle{
+					margin-bottom: 8px;
+					h2{
+						font-weight: 400;
+						font-size: var(--fs-600);
+						color: var(--green-600);
+					}
+				}
+				.text{
+					margin-bottom: 24px;
+					p{
+						font-size: var(--fs-500);
+						width: 50ch;
+						text-align: center;
+						line-height: 150%;
+						.highlight{
+							color: var(--green-500);
+							font-weight: 700;
+						}
+					}
+				}
+			}
+		}
 		.contact {
-			scroll-margin-top: 200px;
+			scroll-margin-top: 150px;
 			.title {
 				h1 {
 					font-weight: 900;
