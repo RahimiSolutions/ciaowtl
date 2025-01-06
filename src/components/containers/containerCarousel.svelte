@@ -2,8 +2,8 @@
 	import container40 from '$lib/images/container40.svg';
 	import container20 from '$lib/images/container20.svg';
 	import container10 from '$lib/images/container10.svg';
-	import { fade, fly } from 'svelte/transition';
-	import { cubicOut } from 'svelte/easing';
+	import { fly } from 'svelte/transition';
+	import { cubicInOut } from 'svelte/easing';
 	import { writable } from 'svelte/store';
 	import Arrow from '$lib/icons/arrow.svelte';
 	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
@@ -150,132 +150,188 @@
 				<div class="toggle-label {!$useMetric ? 'active' : 'inactive'}">Imperial</div>
 			</div>
 			{#key containers[currentIndex]}
-				<div class="content" in:fade={{ duration: 300 }} out:fade={{ duration: 300 }} >
-					<div class="image" in:fly={{ y: 20, duration: 300, easing: cubicOut }}>
-						<img
-							src={containers[currentIndex].image}
-							alt={containers[currentIndex].title}
-							width="475"
-						/>
-					</div>
-					<div class="measurements" in:fly={{ x: 20, duration: 300, easing: cubicOut }}>
-						{#if $useMetric}
-							<div class="external">
-								<div class="title">
-									<h3>External Measurements:</h3>
-									<ul>
-										<li>
-											<p>
-												Height: {containers[currentIndex].metricMeasurments.externalMeasurements.height}m
-											</p>
-										</li>
-										<li>
-											<p>
-												Width: {containers[currentIndex].metricMeasurments.externalMeasurements.width}m
-											</p>
-										</li>
-										<li>
-											<p>
-												Length: {containers[currentIndex].metricMeasurments.externalMeasurements.length}m
-											</p>
-										</li>
-									</ul>
+				<div class="wrapper">
+					<div class="content" in:fly={{ x: 70, duration: 400, delay: 0, easing: cubicInOut }}>
+						<div class="image">
+							<img
+								src={containers[currentIndex].image}
+								alt={containers[currentIndex].title}
+								width="475"
+							/>
+						</div>
+						<div class="measurements">
+							{#if $useMetric}
+								<div class="external">
+									<div class="title">
+										<h3>External Measurements:</h3>
+										<ul>
+											<li>
+												<p>
+													Height: <span class="bold"
+														>{containers[currentIndex].metricMeasurments.externalMeasurements
+															.height}m
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Width: <span class="bold"
+														>{containers[currentIndex].metricMeasurments.externalMeasurements
+															.width}m
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Length: <span class="bold">
+														{containers[currentIndex].metricMeasurments.externalMeasurements
+															.length}m</span
+													>
+												</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div class="internal">
-								<div class="title">
-									<h3>Internal Measurements:</h3>
-									<ul>
-										<li>
-											<p>
-												Height: {containers[currentIndex].metricMeasurments.internalMeasurements.height}m
-											</p>
-										</li>
-										<li>
-											<p>
-												Width: {containers[currentIndex].metricMeasurments.internalMeasurements.width}m
-											</p>
-										</li>
-										<li>
-											<p>
-												Length: {containers[currentIndex].metricMeasurments.internalMeasurements.length}m
-											</p>
-										</li>
-									</ul>
+								<div class="internal">
+									<div class="title">
+										<h3>Internal Measurements:</h3>
+										<ul>
+											<li>
+												<p>
+													Height: <span class="bold"
+														>{containers[currentIndex].metricMeasurments.internalMeasurements
+															.height}m
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Width: <span class="bold"
+														>{containers[currentIndex].metricMeasurments.internalMeasurements
+															.width}m
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Length: <span class="bold">
+														{containers[currentIndex].metricMeasurments.internalMeasurements
+															.length}m</span
+													>
+												</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div class="door">
-								<div class="title">
-									<h3>Door Opening:</h3>
-									<ul>
-										<li><p>Height: {containers[currentIndex].metricMeasurments.doorOpening.height}m</p></li>
-										<li><p>Width: {containers[currentIndex].metricMeasurments.doorOpening.width}m</p></li>
-									</ul>
+								<div class="door">
+									<div class="title">
+										<h3>Door Opening:</h3>
+										<ul>
+											<li>
+												<p>
+													Height: <span class="bold"
+														>{containers[currentIndex].metricMeasurments.doorOpening.height}m
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Width: <span class="bold">
+														{containers[currentIndex].metricMeasurments.doorOpening.width}m</span
+													>
+												</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						{:else}
-							<div class="external">
-								<div class="title">
-									<h3>External Measurements:</h3>
-									<ul>
-										<li>
-											<p>
-												Height: {containers[currentIndex].impericalMeasurements.externalMeasurements.height}
-												ft
-											</p>
-										</li>
-										<li>
-											<p>
-												Width: {containers[currentIndex].impericalMeasurements.externalMeasurements.width} ft
-											</p>
-										</li>
-										<li>
-											<p>
-												Length: {containers[currentIndex].impericalMeasurements.externalMeasurements.length}
-												ft
-											</p>
-										</li>
-									</ul>
+							{:else}
+								<div class="external">
+									<div class="title">
+										<h3>External Measurements:</h3>
+										<ul>
+											<li>
+												<p>
+													Height: <span class="bold">
+														{containers[currentIndex].impericalMeasurements.externalMeasurements
+															.height}
+														ft</span
+													>
+												</p>
+											</li>
+											<li>
+												<p>
+													Width:<span class="bold"
+														>{containers[currentIndex].impericalMeasurements.externalMeasurements
+															.width} ft
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Length:<span class="bold"
+														>{containers[currentIndex].impericalMeasurements.externalMeasurements
+															.length}
+														ft
+													</span>
+												</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div class="internal">
-								<div class="title">
-									<h3>Internal Measurements:</h3>
-									<ul>
-										<li>
-											<p>
-												Height: {containers[currentIndex].impericalMeasurements.internalMeasurements.height}
-												ft
-											</p>
-										</li>
-										<li>
-											<p>
-												Width: {containers[currentIndex].impericalMeasurements.internalMeasurements.width} ft
-											</p>
-										</li>
-										<li>
-											<p>
-												Length: {containers[currentIndex].impericalMeasurements.internalMeasurements.length}
-												ft
-											</p>
-										</li>
-									</ul>
+								<div class="internal">
+									<div class="title">
+										<h3>Internal Measurements:</h3>
+										<ul>
+											<li>
+												<p>
+													Height: <span class="bold"
+														>{containers[currentIndex].impericalMeasurements.internalMeasurements
+															.height} ft
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Width:<span class="bold"
+														>{containers[currentIndex].impericalMeasurements.internalMeasurements
+															.width} ft
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Length: <span class="bold">
+														{containers[currentIndex].impericalMeasurements.internalMeasurements
+															.length} ft</span
+													>
+												</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-							<div class="door">
-								<div class="title">
-									<h3>Door Opening:</h3>
-									<ul>
-										<li>
-											<p>Height: {containers[currentIndex].impericalMeasurements.doorOpening.height} ft</p>
-										</li>
-										<li>
-											<p>Width: {containers[currentIndex].impericalMeasurements.doorOpening.width} ft</p>
-										</li>
-									</ul>
+								<div class="door">
+									<div class="title">
+										<h3>Door Opening:</h3>
+										<ul>
+											<li>
+												<p>
+													Height: <span class="bold"
+														>{containers[currentIndex].impericalMeasurements.doorOpening.height} ft
+													</span>
+												</p>
+											</li>
+											<li>
+												<p>
+													Width: <span class="bold"
+														>{containers[currentIndex].impericalMeasurements.doorOpening.width} ft
+													</span>
+												</p>
+											</li>
+										</ul>
+									</div>
 								</div>
-							</div>
-						{/if}
+							{/if}
+						</div>
 					</div>
 				</div>
 			{/key}
@@ -322,7 +378,6 @@
 			height: 40px;
 			cursor: pointer;
 			user-select: none;
- 
 
 			.toggle-label {
 				flex: 1;
@@ -364,6 +419,9 @@
 			}
 		}
 
+		.wrapper {
+			min-height: 550px;
+		}
 		.content {
 			position: relative;
 			.image {
@@ -394,6 +452,10 @@
 							p {
 								font-size: var(--fs-400);
 								color: var(--black);
+								line-height: 150%;
+								.bold {
+									font-weight: 800;
+								}
 							}
 						}
 					}
@@ -414,6 +476,4 @@
 			}
 		}
 	}
-
-    
 </style>
