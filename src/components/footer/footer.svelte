@@ -11,12 +11,9 @@
 	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 </script>
 
-<MediaQuery query="(max-width: 768px)" let:matches>
-	{#if matches}{/if}
-</MediaQuery>
-<MediaQuery query="(min-width: 769px)" let:matches>
+<MediaQuery query="(min-width: 1024px)" let:matches>
 	{#if matches}
-		<footer>
+		<footer class="desktop">
 			<div class="notch">
 				<div class="container">
 					<img src={notch} alt="scalable vector graphic of a top notch" />
@@ -109,9 +106,90 @@
 		</footer>
 	{/if}
 </MediaQuery>
+<MediaQuery query="(max-width: 1023px)" let:matches>
+	{#if matches}
+		<footer class="mobile">
+			<div class="notch">
+				<div class="container">
+					<img src={notch} alt="scalable vector graphic of a top notch" />
+					<div class="slogan"><p>Time is money, <br /> and we save you both</p></div>
+				</div>
+			</div>
+			<div class="content">
+				<div class="top">
+					<div class="contact">
+						<h2>Contact Us</h2>
+						<ul>
+							<li><a href="mailto:info@ciao-wtl.com" target="_blank">info@ciao-wtl.com</a></li>
+							<li><a href="tel:+494075695565" target="_blank">+49 4075 695565</a></li>
+						</ul>
+					</div>
+					<div class="business-hours">
+						<h2>Business Hours</h2>
+						<ul>
+							<li>Mon - Fri : 8am - 5pm</li>
+						</ul>
+					</div>
+				</div>
+				<div class="down">
+					<div class="sitemap">
+						<h2>Sitemap</h2>
+						<ul>
+							<li><a href="/#services">Services</a></li>
+							<li><a href="/#contact">Contact</a></li>
+							<li><a href="/#reviews">Reviews</a></li>
+							<li><a href="https://wa.me/4917657966211" target="_blank">Get a Quote</a></li>
+							<li><a href="/imprint">Imprint</a></li>
+						</ul>
+					</div>
+					<div class="socials">
+						<h2>Our Socials</h2>
+						<ul>
+							<li>
+								<a
+									href="https://www.facebook.com/profile.php?id=100095520884839&locale=nb_NO"
+									target="_blank"
+								>
+									<img src={facebook} alt="facebook icon" />
+									<p>Facebook</p>
+								</a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/ciao_wtl/" target="_blank">
+									<img src={instagram} alt="instagram icon" />
+									<p>Instagram</p>
+								</a>
+							</li>
+							<li>
+								<a
+									href="https://www.linkedin.com/company/ciao-world-transport-logistics/"
+									target="_blank"
+								>
+									<img src={linkedin} alt="linkedin icon" />
+									<p>Linkedin</p>
+								</a>
+							</li>
+							<li>
+								<a href="https://wa.me/4917657966211" target="_blank">
+									<img src={whatsapp} alt="whatsapp icon" />
+									<p>Whatsapp</p>
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="left">
+					<p>Copyright © 2025 Ciao! World Transport & Logistics UG. All Rights Reserved</p>
+				</div>
+			</div>
+		</footer>
+	{/if}
+</MediaQuery>
 
 <style lang="scss">
-	footer {
+	.desktop {
 		border-radius: 50px;
 		background-color: var(--green-600);
 		color: var(--white);
@@ -308,6 +386,165 @@
 							}
 						}
 					}
+				}
+			}
+		}
+	}
+	.mobile {
+		border-radius: 25px;
+		background-color: var(--green-600);
+		color: var(--white);
+		width: 96vw;
+		margin: 100px auto 2vw auto;
+		padding: 20px;
+		position: relative;
+
+		.notch {
+			position: absolute;
+			top: -1px;
+			left: 50%;
+			transform: translateX(-50%);
+			.container {
+				position: relative;
+
+				img {
+					width: clamp(17.1875rem, 15.2425rem + 10.3734vw, 21.875rem);
+				}
+				.slogan {
+					position: absolute;
+					top: 25%;
+					left: 50%;
+					transform: translateX(-50%);
+					text-align: center;
+					text-transform: uppercase;
+					font-weight: 900;
+					font-size: var(--mfs-500);
+					width: 100%;
+					color: var(--black);
+				}
+			}
+		}
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			margin: 72px 0 32px 0;
+			align-items: baseline;
+			justify-content: space-evenly;
+			gap: 40px;
+			.top {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+				.contact {
+				width: 100%;
+
+					h2 {
+						width: fit-content;
+						font-size: var(--mfs-600);
+						margin-bottom: 16px;
+						border-bottom: 1px solid white;
+					}
+					ul {
+						li {
+							font-size: var(--mfs-500);
+							list-style-type: none;
+							margin-bottom: 16px;
+						}
+					}
+				}
+				.business-hours {
+				width: 100%;
+
+					h2 {
+						width: fit-content;
+						font-size: var(--mfs-600);
+						margin-bottom: 16px;
+						border-bottom: 1px solid white;
+					}
+					ul {
+						li {
+							font-size: var(--mfs-500);
+							list-style-type: none;
+							margin-bottom: 16px;
+						}
+					}
+				}
+			}
+			.down {
+				display: flex;
+				width: 100%;
+				justify-content: space-between;
+				.sitemap {
+					width: 100%;
+					h2 {
+						width: fit-content;
+						font-size: var(--mfs-600);
+						margin-bottom: 16px;
+						border-bottom: 1px solid white;
+					}
+					ul {
+						height: 100%;
+						align-items: start;
+						display: flex;
+						flex-direction: column;
+						gap: 24px;
+						li {
+							list-style-position: inside;
+							font-size: var(--mfs-500);
+							font-weight: 400;
+						}
+					}
+				}
+				.socials {
+					width: 100%;
+					h2 {
+						width: fit-content;
+						font-size: var(--mfs-600);
+						margin-bottom: 16px;
+						border-bottom: 1px solid white;
+					}
+					ul {
+						height: 100%;
+						align-items: start;
+						display: flex;
+						flex-direction: column;
+						gap: 16px;
+						li {
+							list-style-type: none;
+
+							a {
+								display: flex;
+								align-items: center;
+								gap: 8px;
+								img {
+									width: 36px;
+									height: 36px;
+								}
+								p {
+									font-size: var(--mfs-500);
+									font-weight: 400;
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		a {
+			color: var(--white);
+			text-decoration: none;
+		}
+		.bottom {
+			display: flex;
+			position: relative;
+			.left {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				p {
+					opacity: 0.6;
+					font-size: var(--mfs-300);
 				}
 			}
 		}
