@@ -51,48 +51,43 @@
 		})();
 	}
 
-	let velocity = 0;
-	let lastX = 0;
-	let lastTime = 0;
+	let lastMoveTime = 0;
 
 	function handleMove(event: MouseEvent | TouchEvent) {
 		if (!isDragging) return;
+
+		const now = performance.now();
+		// Throttle to 60 FPS (16.7ms per frame)
+		if (now - lastMoveTime < 16.7) return;
+		lastMoveTime = now;
+
 		const currentX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-		const currentTime = Date.now();
+		const dx = currentX - startX;
+		const newPosition = startPosition + dx;
 
-		const dx = currentX - lastX;
-		const dt = currentTime - lastTime;
-
-		velocity = dx / dt;
-
-		const newPosition = $position + dx;
 		const maxPosition = 0;
-		const minPosition = -(services.length - Math.floor(containerWidth / cardWidth)) * cardWidth;
+		const minPosition = -(services.length * (cardWidth + 24) - containerWidth);
 		position.set(Math.max(minPosition, Math.min(maxPosition, newPosition)));
-
-		lastX = currentX;
-		lastTime = currentTime;
 	}
 
 	function handleEnd() {
 		if (!isDragging) return;
 		isDragging = false;
 
-		function momentum() {
-			if (Math.abs(velocity) > 0.1) {
-				const newPosition = $position + velocity * 16; // 16ms is approx. one frame at 60fps
-				const maxPosition = 0;
-				const minPosition = -(services.length - Math.floor(containerWidth / cardWidth)) * cardWidth;
-				position.set(Math.max(minPosition, Math.min(maxPosition, newPosition)));
-				velocity *= 0.95; // Decay factor
-				requestAnimationFrame(momentum);
-			} else {
-				const closestIndex = Math.round(-$position / cardWidth);
-				position.set(-closestIndex * cardWidth);
-			}
-		}
+		let currentPosition: number = 0;
+		position.subscribe((value) => {
+			currentPosition = value;
+		})();
 
-		requestAnimationFrame(momentum);
+		const closestIndex = Math.round(-currentPosition / cardWidth);
+		position.set(-closestIndex * cardWidth);
+
+		// Add easing for snapping
+		const container = document.querySelector('.card-container') as HTMLElement;
+		container.style.transition = 'transform 0.3s ease-out';
+		setTimeout(() => {
+			container.style.transition = '';
+		}, 300);
 	}
 </script>
 
@@ -203,16 +198,14 @@
 		.container {
 			width: 100%;
 
-			
 			.card-container {
-				overflow-x: hidden;
 				display: flex;
 				width: fit-content;
 				gap: 24px;
 				transition: transform 0.3s ease;
 				user-select: none;
 				cursor: grab;
-				padding-right: calc(100% - 200px);
+				padding-right: calc(100% - var(--card-visible-width));
 			}
 		}
 	}
