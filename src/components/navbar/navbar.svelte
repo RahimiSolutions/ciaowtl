@@ -475,6 +475,7 @@
 			height: 48px;
 			width: 160px;
 			border: none;
+			
 			a {
 				text-decoration: none;
 				color: var(--white);
@@ -830,6 +831,7 @@
 			padding: 0px 8px;
 			font-size: var(--mfs-500);
 			border-radius: 8px;
+			border: none;
 			cursor: pointer;
 			font-weight: 600;
 			margin: 0 8px;

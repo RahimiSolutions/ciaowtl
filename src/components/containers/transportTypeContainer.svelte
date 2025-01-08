@@ -51,26 +51,48 @@
 		})();
 	}
 
+	let velocity = 0;
+	let lastX = 0;
+	let lastTime = 0;
+
 	function handleMove(event: MouseEvent | TouchEvent) {
 		if (!isDragging) return;
 		const currentX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-		const dx = currentX - startX;
-		const newPosition = startPosition + dx;
+		const currentTime = Date.now();
+
+		const dx = currentX - lastX;
+		const dt = currentTime - lastTime;
+
+		velocity = dx / dt;
+
+		const newPosition = $position + dx;
 		const maxPosition = 0;
-		const minPosition = -(services.length - Math.floor(containerWidth / cardWidth)) * cardWidth ;
+		const minPosition = -(services.length - Math.floor(containerWidth / cardWidth)) * cardWidth;
 		position.set(Math.max(minPosition, Math.min(maxPosition, newPosition)));
+
+		lastX = currentX;
+		lastTime = currentTime;
 	}
 
 	function handleEnd() {
 		if (!isDragging) return;
 		isDragging = false;
-		let currentPosition: number = 0;
-		position.subscribe((value) => {
-			currentPosition = value;
-		})();
 
-		const closestIndex = Math.round(-currentPosition / cardWidth);
-		position.set(-closestIndex * cardWidth);
+		function momentum() {
+			if (Math.abs(velocity) > 0.1) {
+				const newPosition = $position + velocity * 16; // 16ms is approx. one frame at 60fps
+				const maxPosition = 0;
+				const minPosition = -(services.length - Math.floor(containerWidth / cardWidth)) * cardWidth;
+				position.set(Math.max(minPosition, Math.min(maxPosition, newPosition)));
+				velocity *= 0.95; // Decay factor
+				requestAnimationFrame(momentum);
+			} else {
+				const closestIndex = Math.round(-$position / cardWidth);
+				position.set(-closestIndex * cardWidth);
+			}
+		}
+
+		requestAnimationFrame(momentum);
 	}
 </script>
 
@@ -180,9 +202,10 @@
 		position: relative;
 		.container {
 			width: 100%;
+
 			
-			overflow-x: hidden;
 			.card-container {
+				overflow-x: hidden;
 				display: flex;
 				width: fit-content;
 				gap: 24px;
@@ -192,6 +215,5 @@
 				padding-right: calc(100% - 200px);
 			}
 		}
-		
 	}
 </style>

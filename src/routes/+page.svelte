@@ -1264,7 +1264,7 @@
 					border-radius: 10px;
 				}
 				.number {
-					font-size: var(--fs-800);
+					font-size: var(--mfs-700);
 					font-weight: bold;
 					color: var(--black);
 				}

@@ -687,6 +687,7 @@
 		align-items: center;
 		position: relative;
 		width: 100%;
+		overflow-x: hidden;
 
 		.header {
 			display: flex;
