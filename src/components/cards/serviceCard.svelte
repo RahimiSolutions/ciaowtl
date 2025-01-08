@@ -10,6 +10,7 @@
 	import exportPicture from '$lib/images/export.jpg';
 	import projectPicture from '$lib/images/projectcargo.jpg';
 	import breakbulkPicture from '$lib/images/breakbulk.jpg';
+	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 
 	export let flipped = false;
 	let picture = '';
@@ -63,37 +64,72 @@
 	}
 </script>
 
-<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
-<div
-	class="card {flipped ? 'flipped' : ''}"
-	on:click={() => {
-		if (flipped) flipCard();
-	}}
->
-	<div class="inner">
-		<div class="background-image" style="background-image: url({picture});"></div>
-		<div class="side front">
-			<div class="overlay"></div>
-			<div class="title">{title}</div>
-			<img src={corner} alt="corner" class="corner" />
-			<div class="circle" on:click|stopPropagation={flipCard}>
-				<div class="arrow">
-					<Arrow width={36} fill="#000" rotation={180} />
+<MediaQuery query="(min-width: 1024px)" let:matches>
+	{#if matches}
+		<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+		<div
+			class="card {flipped ? 'flipped' : ''}"
+			on:click={() => {
+				if (flipped) flipCard();
+			}}
+		>
+			<div class="inner">
+				<div class="background-image" style="background-image: url({picture});"></div>
+				<div class="side front">
+					<div class="overlay"></div>
+					<div class="title">{title}</div>
+					<img src={corner} alt="corner" class="corner" />
+					<div class="circle" on:click|stopPropagation={flipCard}>
+						<div class="arrow">
+							<Arrow width={36} fill="#000" rotation={180} />
+						</div>
+					</div>
+				</div>
+				<div class="side back">
+					<div>
+						<h2>{title}</h2>
+						<p>{@html text}</p>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="side back">
-			<div>
-				<h2>{title}</h2>
-				<p>{@html text}</p>
+	{/if}
+</MediaQuery>
+<MediaQuery query="(max-width: 1023px)" let:matches>
+	{#if matches}
+		<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+		<div
+			class="mobile-card {flipped ? 'flipped' : ''}"
+			on:click={() => {
+				if (flipped) flipCard();
+			}}
+		>
+			<div class="inner">
+				<div class="background-image" style="background-image: url({picture});"></div>
+				<div class="side front">
+					<div class="overlay"></div>
+					<div class="title">{title}</div>
+					<img src={corner} alt="corner" class="corner" />
+					<div class="circle" on:click|stopPropagation={flipCard}>
+						<div class="arrow">
+							<Arrow width={36} fill="#000" rotation={180} />
+						</div>
+					</div>
+				</div>
+				<div class="side back">
+					<div>
+						<h2>{title}</h2>
+						<p>{@html text}</p>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
+		{/if}
+</MediaQuery>
 
 <style lang="scss">
 	.card {
-		width: clamp(23.4375rem, 14.5089rem + 13.9509vw, 31.25rem);
+		width: clamp(25rem, 10.7143rem + 22.3214vw, 37.5rem);
 		height: 325px;
 		border-radius: 25px;
 		perspective: 1000px;
@@ -151,7 +187,6 @@
 						font-weight: bold;
 						text-align: center;
 						width: 100%;
-
 					}
 
 					.corner {
@@ -228,6 +263,148 @@
 					p {
 						margin: 0;
 						font-size: var(--fs-400);
+						line-height: 1.5;
+					}
+				}
+			}
+		}
+	}
+	.mobile-card {
+		width: 90%;
+		height: 250px;
+		border-radius: 25px;
+		perspective: 1000px;
+
+		&.flipped .inner {
+			transform: rotateY(180deg);
+		}
+
+		.background-image {
+			position: absolute;
+			border-radius: 25px;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-size: cover;
+			background-position: center;
+			z-index: -1;
+		}
+
+		.inner {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			transition: transform 0.6s;
+			transform-style: preserve-3d;
+			transform: rotateY(0deg);
+
+			.side {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				backface-visibility: hidden;
+
+				&.front {
+					background-size: cover;
+					background-position: center;
+
+					.overlay {
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 100%;
+						height: 100%;
+						background: linear-gradient(to bottom, var(--green-600), transparent);
+					}
+
+					.title {
+						position: absolute;
+						top: 20px;
+						left: 50%;
+						transform: translateX(-50%);
+						color: white;
+						font-size: var(--mfs-600);
+						font-weight: bold;
+						text-align: center;
+						width: 100%;
+					}
+
+					.corner {
+						position: absolute;
+						bottom: -1px;
+						right: -1px;
+						width: 40%;
+					}
+
+					.circle {
+						position: absolute;
+						overflow: hidden;
+						bottom: 16px;
+						right: 16px;
+						width: 60px;
+						height: 60px;
+						background-color: var(--white);
+						border-radius: 50%;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						cursor: pointer;
+						transition: background-color 0.4s ease;
+
+						.arrow {
+							z-index: 99;
+							height: 36px;
+							width: 36px;
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							transition:
+								transform 0.6s ease-in-out,
+								opacity 0.6s ease-in-out;
+						}
+
+						&:hover {
+							background-color: var(--green-500);
+
+							.arrow {
+								animation: arrowMove 1s ease forwards;
+							}
+						}
+
+						// Reset animation smoothly when hover is removed
+						&:not(:hover) .arrow {
+							animation: arrowReturn 0.6s ease forwards;
+						}
+					}
+				}
+
+				&.back {
+					background-color: rgba(19, 35, 32, 0.85);
+					color: white;
+					transform: rotateY(180deg);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					text-align: center;
+					padding: 20px;
+					cursor: pointer;
+
+					h2 {
+						position: absolute;
+						top: 20px;
+						left: 50%;
+						width: 100%;
+						transform: translateX(-50%);
+						color: white;
+						font-size: var(--mfs-600);
+						font-weight: bold;
+						text-align: center;
+					}
+
+					p {
+						margin: 0;
+						font-size: var(--mfs-400);
 						line-height: 1.5;
 					}
 				}

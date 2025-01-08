@@ -91,7 +91,7 @@
 					</div>
 
 					<button class="cta" on:click={() => handleClick('', '/#contact')}>
-						<a href="/#contact">Contact Us</a>
+						<a href="/#contact">Contact</a>
 					</button>
 				</nav>
 			{/if}
@@ -144,7 +144,7 @@
 		{/if}
 	{/if}
 </MediaQuery>
-<MediaQuery query="(max-width: 1799px; min-width:769px;)" let:matches>
+<MediaQuery query="(min-width:769px)" let:matches>
 	{#if matches}
 		<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
 		{#if !showTopMenu}
@@ -481,7 +481,7 @@
 			}
 		}
 	}
-	
+
 	.top-menu {
 		margin-top: 0;
 		top: 0;
@@ -541,7 +541,8 @@
 				color: var(--white);
 			}
 		}
-	}.hero-menu-mobile {
+	}
+	.hero-menu-mobile {
 		display: flex;
 		width: 98%;
 		align-items: center;
@@ -563,10 +564,11 @@
 				width: 100%;
 				height: 100%;
 				display: flex;
-				justify-content: start;
+				justify-content: center;
 				align-items: center;
 				background-color: var(--black);
 				border-radius: 8px;
+
 				#checkbox {
 					display: none;
 				}
@@ -577,34 +579,34 @@
 					cursor: pointer;
 					margin: auto;
 					display: block;
-					height: calc(4px * 3 + 4px * 2); // Reduced from 11px to 4px
+					height: 18px; // Adjusted height
 
 					.bar {
 						position: absolute;
 						left: 0;
 						right: 0;
 						height: 2px;
-						border-radius: calc(4px / 2);
+						border-radius: 1px;
 						background: var(--white);
 						color: inherit;
 						opacity: 1;
 						transition: none 0.35s cubic-bezier(0.5, -0.35, 0.35, 1.5) 0s;
 
 						&--top {
-							bottom: calc(50% + 4px + 4px / 2); // Reduced from 11px to 4px
-							transition-property: bottom, transform;
+							top: 0;
+							transition-property: top, transform;
 							transition-delay: calc(0s + 0.35s), 0s;
 						}
 
 						&--middle {
-							top: calc(50% - 3.5px / 2);
+							top: 8px; // Centered
 							transition-property: opacity;
 							transition-delay: calc(0s + 0.35s);
 						}
 
 						&--bottom {
-							top: calc(50% + 4px + 4px / 2); // Reduced from 11px to 4px
-							transition-property: top, transform;
+							bottom: 0;
+							transition-property: bottom, transform;
 							transition-delay: calc(0s + 0.35s), 0s;
 						}
 					}
@@ -613,8 +615,8 @@
 				#checkbox:checked + .toggle {
 					.bar {
 						&--top {
-							bottom: calc(50% - 4px / 2);
-							transform: rotate(135deg);
+							top: 8px;
+							transform: rotate(45deg);
 							transition-delay: 0s, calc(0s + 0.35s);
 						}
 
@@ -625,8 +627,8 @@
 						}
 
 						&--bottom {
-							top: calc(50% - 4px / 2);
-							transform: rotate(225deg);
+							bottom: 8px;
+							transform: rotate(-45deg);
 							transition-delay: 0s, calc(0s + 0.35s);
 						}
 					}
@@ -703,6 +705,7 @@
 
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 
 		.dropdown {
 			position: relative;
@@ -714,10 +717,11 @@
 				width: 100%;
 				height: 100%;
 				display: flex;
-				justify-content: start;
+				justify-content: center;
 				align-items: center;
-				background-color: transparent;
+				background-color: var(--black);
 				border-radius: 8px;
+
 				#checkbox {
 					display: none;
 				}
@@ -728,34 +732,34 @@
 					cursor: pointer;
 					margin: auto;
 					display: block;
-					height: calc(4px * 3 + 4px * 2); // Reduced from 11px to 4px
+					height: 18px; // Adjusted height
 
 					.bar {
 						position: absolute;
 						left: 0;
 						right: 0;
 						height: 2px;
-						border-radius: calc(4px / 2);
-						background: var(--black);
+						border-radius: 1px;
+						background: var(--white);
 						color: inherit;
 						opacity: 1;
 						transition: none 0.35s cubic-bezier(0.5, -0.35, 0.35, 1.5) 0s;
 
 						&--top {
-							bottom: calc(50% + 4px + 4px / 2); // Reduced from 11px to 4px
-							transition-property: bottom, transform;
+							top: 0;
+							transition-property: top, transform;
 							transition-delay: calc(0s + 0.35s), 0s;
 						}
 
 						&--middle {
-							top: calc(50% - 3.5px / 2);
+							top: 8px; // Centered
 							transition-property: opacity;
 							transition-delay: calc(0s + 0.35s);
 						}
 
 						&--bottom {
-							top: calc(50% + 4px + 4px / 2); // Reduced from 11px to 4px
-							transition-property: top, transform;
+							bottom: 0;
+							transition-property: bottom, transform;
 							transition-delay: calc(0s + 0.35s), 0s;
 						}
 					}
@@ -764,8 +768,8 @@
 				#checkbox:checked + .toggle {
 					.bar {
 						&--top {
-							bottom: calc(50% - 4px / 2);
-							transform: rotate(135deg);
+							top: 8px;
+							transform: rotate(45deg);
 							transition-delay: 0s, calc(0s + 0.35s);
 						}
 
@@ -776,8 +780,8 @@
 						}
 
 						&--bottom {
-							top: calc(50% - 4px / 2);
-							transform: rotate(225deg);
+							bottom: 8px;
+							transform: rotate(-45deg);
 							transition-delay: 0s, calc(0s + 0.35s);
 						}
 					}
@@ -823,12 +827,13 @@
 		.cta {
 			background-color: var(--black);
 			color: var(--white);
-			padding: 0px 24px;
-			font-size: var(--fs-500);
-			border-radius: 12px;
+			padding: 0px 8px;
+			font-size: var(--mfs-500);
+			border-radius: 8px;
 			cursor: pointer;
 			font-weight: 600;
-			margin: 0 24px;
+			margin: 0 8px;
+			height: 32px;
 			a {
 				text-decoration: none;
 				color: var(--white);
