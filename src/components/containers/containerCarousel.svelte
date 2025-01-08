@@ -338,6 +338,208 @@
 		</div>
 	{/if}
 </MediaQuery>
+<MediaQuery query="(max-width: 1023px)" let:matches>
+	{#if matches}
+		<div class="mobile-carousel">
+			<div class="header">
+				<button on:click={prevContainer}>
+					<Arrow width={32}/>
+				</button>
+				<h2>{containers[currentIndex].title}</h2>
+				<button on:click={nextContainer}>
+					<Arrow width={32} rotation={180} />
+				</button>
+			</div>
+			<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_static_element_interactions -->
+			<div class="toggle" on:click={() => ($useMetric = !$useMetric)}>
+				<div class="toggle-option {$useMetric ? 'metric-active' : 'imperial-active'}"></div>
+				<div class="toggle-label {$useMetric ? 'active' : 'inactive'}">Metric</div>
+				<div class="toggle-label {!$useMetric ? 'active' : 'inactive'}">Imperial</div>
+			</div>
+			{#key containers[currentIndex]}
+				<div class="wrapper">
+					<div class="content" in:fly={{ x: 70, duration: 400, delay: 0, easing: cubicInOut }}>
+						<div class="image">
+							<img
+								src={containers[currentIndex].image}
+								alt={containers[currentIndex].title}
+								width="300"
+							/>
+						</div>
+					</div>
+				</div>
+				<div class="measurements">
+					{#if $useMetric}
+						<div class="external">
+							<div class="title">
+								<h3>External:</h3>
+								<ul>
+									<li>
+										<p>
+											Height: <span class="bold"
+												>{containers[currentIndex].metricMeasurments.externalMeasurements.height}m
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Width: <span class="bold"
+												>{containers[currentIndex].metricMeasurments.externalMeasurements.width}m
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Length: <span class="bold">
+												{containers[currentIndex].metricMeasurments.externalMeasurements
+													.length}m</span
+											>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="internal">
+							<div class="title">
+								<h3>Internal:</h3>
+								<ul>
+									<li>
+										<p>
+											Height: <span class="bold"
+												>{containers[currentIndex].metricMeasurments.internalMeasurements.height}m
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Width: <span class="bold"
+												>{containers[currentIndex].metricMeasurments.internalMeasurements.width}m
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Length: <span class="bold">
+												{containers[currentIndex].metricMeasurments.internalMeasurements
+													.length}m</span
+											>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="door">
+							<div class="title">
+								<h3>Door Opening:</h3>
+								<ul>
+									<li>
+										<p>
+											Height: <span class="bold"
+												>{containers[currentIndex].metricMeasurments.doorOpening.height}m
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Width: <span class="bold">
+												{containers[currentIndex].metricMeasurments.doorOpening.width}m</span
+											>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					{:else}
+						<div class="external">
+							<div class="title">
+								<h3>External:</h3>
+								<ul>
+									<li>
+										<p>
+											Height: <span class="bold">
+												{containers[currentIndex].impericalMeasurements.externalMeasurements.height}
+												ft</span
+											>
+										</p>
+									</li>
+									<li>
+										<p>
+											Width:<span class="bold"
+												>{containers[currentIndex].impericalMeasurements.externalMeasurements.width}
+												ft
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Length:<span class="bold"
+												>{containers[currentIndex].impericalMeasurements.externalMeasurements
+													.length}
+												ft
+											</span>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="internal">
+							<div class="title">
+								<h3>Internal:</h3>
+								<ul>
+									<li>
+										<p>
+											Height: <span class="bold"
+												>{containers[currentIndex].impericalMeasurements.internalMeasurements
+													.height} ft
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Width:<span class="bold"
+												>{containers[currentIndex].impericalMeasurements.internalMeasurements.width}
+												ft
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Length: <span class="bold">
+												{containers[currentIndex].impericalMeasurements.internalMeasurements.length}
+												ft</span
+											>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="door">
+							<div class="title">
+								<h3>Door Opening:</h3>
+								<ul>
+									<li>
+										<p>
+											Height: <span class="bold"
+												>{containers[currentIndex].impericalMeasurements.doorOpening.height} ft
+											</span>
+										</p>
+									</li>
+									<li>
+										<p>
+											Width: <span class="bold"
+												>{containers[currentIndex].impericalMeasurements.doorOpening.width} ft
+											</span>
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					{/if}
+				</div>
+			{/key}
+		</div>
+	{/if}
+</MediaQuery>
 
 <style lang="scss">
 	.carousel {
@@ -362,6 +564,8 @@
 				border: none;
 				font-size: 1.5rem;
 				cursor: pointer;
+				display: flex;
+				justify-content: center;
 			}
 		}
 
@@ -472,6 +676,136 @@
 				.door {
 					top: 50%;
 					right: -35%;
+				}
+			}
+		}
+	}
+	.mobile-carousel {
+		margin: 150px auto 50px auto;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+		width: 100%;
+
+		.header {
+			display: flex;
+			align-items: center;
+
+			h2 {
+				margin: 0 1rem;
+				font-size: var(--fs-600);
+				font-weight: 900;
+				color: var(--green-500);
+			}
+
+			button {
+				background: none;
+				border: none;
+				font-size: 1.5rem;
+				cursor: pointer;
+				display: flex;
+				justify-content: center;
+			}
+		}
+
+		.toggle {
+			margin: 1rem 0;
+			display: inline-flex;
+			align-items: center;
+			border: 0.5px solid var(--blue-200);
+			border-radius: 25px;
+			background-color: var(--white);
+			overflow: hidden;
+			position: relative;
+			width: 200px;
+			height: 40px;
+			cursor: pointer;
+			user-select: none;
+
+			.toggle-label {
+				flex: 1;
+				text-align: center;
+				font-size: var(--fs-400);
+				color: black;
+				z-index: 2;
+
+				&.active {
+					color: var(--white);
+					font-weight: bold;
+				}
+
+				&.inactive {
+					color: var(--black);
+				}
+			}
+
+			.toggle-option {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 50%;
+				height: 100%;
+				background-color: var(--green-500);
+				border-radius: 25px;
+				transition:
+					transform 0.3s ease,
+					color 0.3s ease;
+				z-index: 1;
+
+				&.metric-active {
+					transform: translateX(0%);
+				}
+
+				&.imperial-active {
+					transform: translateX(100%);
+				}
+			}
+		}
+
+		.wrapper {
+			min-height: 400px;
+		}
+		.content {
+			.image {
+				margin: 1rem 0;
+
+				img {
+					max-width: 100%;
+					height: auto;
+				}
+			}
+		}
+		.measurements {
+			position: absolute;
+			top: 25%;
+			left: 0;
+			padding: 8px;
+			background-color: var(--green-200);
+			backdrop-filter: blur(4px);
+			border-radius: 0 16px 16px 0;
+			padding: 20px;
+
+			.external,
+			.internal,
+			.door {
+				margin-bottom: 24px;
+				.title {
+					font-size: var(--mfs-500);
+					color: var(--green-500);
+				}
+				ul {
+					li {
+						list-style-type: none;
+						p {
+							font-size: var(--mfs-400);
+							color: var(--black);
+							line-height: 150%;
+							.bold {
+								font-weight: 800;
+							}
+						}
+					}
 				}
 			}
 		}

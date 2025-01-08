@@ -15,11 +15,11 @@
 
 <div class="notch">
 	<div class="top-notch" transition:fly={{ y: -50, delay: 300, duration: 1000, easing: quintOut }}>
-		<img src={topNotch} alt="" />
+		<img class="topnotch-svg" src={topNotch} alt="Scalable vector graphic of top notch" />
 
 		{#if logo}
 			<div class="logo" transition:fly={{ y: -50, delay: 300, duration: 1000, easing: quintOut }}>
-				<img src={ciaowtl} alt="" />
+				<img src={ciaowtl} alt="Ciao World Transport & Logisitics Logo" />
 			</div>
 		{/if}
 	</div>
@@ -27,6 +27,7 @@
 
 <style lang="scss">
 	.notch {
+		
 		width: 100%;
 		display: flex;
 		justify-content: center;
@@ -34,6 +35,7 @@
 		background-color: white;
 
 		.top-notch {
+			
 			width: fit-content;
 			display: flex;
 			justify-content: center;
@@ -42,6 +44,9 @@
 			z-index: 99;
 			top: 0;
 
+			.topnotch-svg{
+				width: 225px;
+			}
 			.logo {
                 position: absolute;
                 height: 100%;
@@ -50,6 +55,7 @@
                 align-items: center;
 				img {
 					max-width: 60%;
+					
 				}
 			}
 		}

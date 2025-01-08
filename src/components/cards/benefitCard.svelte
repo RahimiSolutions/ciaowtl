@@ -1,22 +1,56 @@
-<script>
+<script lang="ts">
 	import cornerNotch from '$lib/images/corner-notch.svg';
+	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 	export let title = '';
 	export let text = '';
 	export let imageUrl = '';
+
+	export let flipped : boolean = false;
 </script>
 
-<div class="card">
-	<div class="background" style="background-image: url({imageUrl});"></div>
-	<div class="overlay"></div>
-	<div class="gradient-overlay"></div>
-	<div class="top">
-		<img loading="lazy" src={cornerNotch} alt="corner notch top left" />
-		<h2>{@html title}</h2>
-	</div>
-	<div class="content">
-		<div class="text">{@html text}</div>
-	</div>
-</div>
+<MediaQuery query="(min-width: 1024px)" let:matches>
+	{#if matches}
+		<div class="card">
+			<div class="background" style="background-image: url({imageUrl});"></div>
+			<div class="overlay"></div>
+			<div class="gradient-overlay"></div>
+			<div class="top">
+				<img loading="lazy" src={cornerNotch} alt="corner notch top left" />
+				<h2>{@html title}</h2>
+			</div>
+			<div class="content">
+				<div class="text">{@html text}</div>
+			</div>
+		</div>
+	{/if}
+</MediaQuery>
+<MediaQuery query="(max-width: 1023px)" let:matches>
+	{#if matches}
+		{#if flipped}
+			<div class="card-mobile">
+				<div class="content flipped">
+					<h2>{@html title}</h2>
+					<div class="text">{@html text}</div>
+				</div>
+
+				<div class="background" style="background-image: url({imageUrl});">
+					<div class="overlay"></div>
+				</div>
+			</div>
+		{:else}
+			<div class="card-mobile">
+				<div class="background" style="background-image: url({imageUrl});">
+					<div class="overlay"></div>
+				</div>
+
+				<div class="content">
+					<h2>{@html title}</h2>
+					<div class="text">{@html text}</div>
+				</div>
+			</div>
+		{/if}
+	{/if}
+</MediaQuery>
 
 <style lang="scss">
 	.card {
@@ -87,6 +121,68 @@
 				font-size: var(--fs-400);
 				color: white;
 				text-align: center;
+			}
+		}
+	}
+	.card-mobile {
+		width: 100%;
+		height: 200px;
+
+		overflow: hidden;
+		position: relative;
+		display: flex;
+		justify-content: space-between;
+		gap: 16px;
+
+		.background {
+			position: relative;
+			width: 200px;
+			height: 200px;
+			background-size: cover;
+			background-position: center;
+			border-radius: 10px;
+			width: 100%;
+			.overlay {
+				position: absolute;
+				border-radius: 10px;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(19, 35, 32, 0.4);
+				z-index: 2;
+			}
+		}
+
+		.content {
+			position: relative;
+			z-index: 3;
+			padding: 5px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			width: 100%;
+			h2 {
+				text-align: start;
+				font-size: var(--mfs-600);
+				margin-bottom: 10px;
+			}
+			.text {
+				font-size: var(--mfs-500);
+				color: var(--black);
+				text-align: start;
+			}
+		}
+		.flipped{
+			h2 {
+				text-align: end;
+				font-size: var(--mfs-600);
+				margin-bottom: 10px;
+			}
+			.text {
+				font-size: var(--mfs-500);
+				color: var(--black);
+				text-align: end;
 			}
 		}
 	}

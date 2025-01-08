@@ -1,5 +1,6 @@
 <script>
 	import ciao from '$lib/images/logo.png';
+	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 	/**
 	 * @type {HTMLElement}
 	 */
@@ -13,25 +14,47 @@
 	 */
 	let marquee2; // Reference to the second marquee
 
-	export let imgSize = "75px";
+	export let imgSize = '75px';
 </script>
 
-<article class="wrapper" bind:this={wrapper} style="--imgSize: {imgSize};">
-	<div class="marquee" bind:this={marquee1}>
-		<div class="marquee__group">
-			<img src={ciao} alt="Sarpsborg Moske" />
-			<img src={ciao} alt="CiaoWTL" />
-			<img src={ciao} alt="Brightpath Studio" />
-		</div>
-		<div aria-hidden="true" class="marquee__group">
-			<img src={ciao} alt="Sarpsborg Moske" />
-			<img src={ciao} alt="CiaoWTL" />
-			<img src={ciao} alt="Brightpath Studio" />
-		</div>
-	</div>
-</article>
+<MediaQuery query="(min-width: 1024px)" let:matches>
+	{#if matches}
+		<article class="wrapper" bind:this={wrapper} style="--imgSize: {imgSize};">
+			<div class="marquee" bind:this={marquee1}>
+				<div class="marquee__group">
+					<img src={ciao} alt="Sarpsborg Moske" />
+					<img src={ciao} alt="CiaoWTL" />
+					<img src={ciao} alt="Brightpath Studio" />
+				</div>
+				<div aria-hidden="true" class="marquee__group">
+					<img src={ciao} alt="Sarpsborg Moske" />
+					<img src={ciao} alt="CiaoWTL" />
+					<img src={ciao} alt="Brightpath Studio" />
+				</div>
+			</div>
+		</article>
+	{/if}
+</MediaQuery>
+<MediaQuery query="(max-width: 1023px)" let:matches>
+	{#if matches}
+		<article class="mobile-wrapper" bind:this={wrapper} style="--imgSize: {imgSize};">
+			<div class="marquee" bind:this={marquee1}>
+				<div class="marquee__group">
+					<img src={ciao} alt="Sarpsborg Moske" />
+					<img src={ciao} alt="CiaoWTL" />
+					<img src={ciao} alt="Brightpath Studio" />
+				</div>
+				<div aria-hidden="true" class="marquee__group">
+					<img src={ciao} alt="Sarpsborg Moske" />
+					<img src={ciao} alt="CiaoWTL" />
+					<img src={ciao} alt="Brightpath Studio" />
+				</div>
+			</div>
+		</article>
+	{/if}
+</MediaQuery>
 
-<style>
+<style lang="scss">
 	:root {
 		--size: clamp(5rem, 1rem + 40vmin, 15rem);
 		--gap: calc(var(--size) / 4);
@@ -44,44 +67,105 @@
 		box-sizing: border-box;
 	}
 
-	.marquee {
+	.wrapper {
 		display: flex;
-		overflow: hidden;
-		user-select: none;
+		flex-direction: column;
 		gap: var(--gap);
-		mask-image: linear-gradient(
-			var(--mask-direction, to right),
-			hsl(0 0% 0% / 0),
-			hsl(0 0% 0% / 1) 20%,
-			hsl(0 0% 0% / 1) 80%,
-			hsl(0 0% 0% / 0)
-		);
-	}
+		margin: auto;
+		margin-top: 50px;
+		max-width: 100vw;
 
-	.marquee__group {
-		flex-shrink: 0;
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
-		gap: var(--gap);
-		min-width: 100%;
-		animation: scroll-x var(--duration) linear infinite;
-	}
+		.marquee {
+			display: flex;
+			overflow: hidden;
+			user-select: none;
+			gap: var(--gap);
+			mask-image: linear-gradient(
+				var(--mask-direction, to right),
+				hsl(0 0% 0% / 0),
+				hsl(0 0% 0% / 1) 20%,
+				hsl(0 0% 0% / 1) 80%,
+				hsl(0 0% 0% / 0)
+			);
 
-	.marquee__group img {
-		max-height: var(--imgSize);
-	}
+			&__group {
+				flex-shrink: 0;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				gap: var(--gap);
+				min-width: 100%;
+				animation: scroll-x var(--duration) linear infinite;
 
-	@media (prefers-reduced-motion: reduce) {
-		.marquee__group {
-			animation-play-state: paused;
+				img {
+					max-height: var(--imgSize);
+				}
+			}
+
+			/* Reverse scrolling (if needed) */
+			/* &--reverse {
+				& .marquee__group {
+					animation-direction: reverse;
+					animation-delay: -3s;
+				}
+			} */
+
+			@media (prefers-reduced-motion: reduce) {
+				&__group {
+					animation-play-state: paused;
+				}
+			}
 		}
-	} 
+	}
+	.mobile-wrapper {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap);
+		margin: auto;
+		max-width: 100vw;
 
-	/* .marquee--reverse .marquee__group {
-		animation-direction: reverse;
-		animation-delay: -3s;
-	} */
+		.marquee {
+			display: flex;
+			overflow: hidden;
+			user-select: none;
+			gap: var(--gap);
+			mask-image: linear-gradient(
+				var(--mask-direction, to right),
+				hsl(0 0% 0% / 0),
+				hsl(0 0% 0% / 1) 20%,
+				hsl(0 0% 0% / 1) 80%,
+				hsl(0 0% 0% / 0)
+			);
+
+			&__group {
+				flex-shrink: 0;
+				display: flex;
+				align-items: center;
+				justify-content: space-around;
+				gap: var(--gap);
+				min-width: 100%;
+				animation: scroll-x var(--duration) linear infinite;
+
+				img {
+					max-height: var(--imgSize);
+				}
+			}
+
+			/* Reverse scrolling (if needed) */
+			/* &--reverse {
+				& .marquee__group {
+					animation-direction: reverse;
+					animation-delay: -3s;
+				}
+			} */
+
+			@media (prefers-reduced-motion: reduce) {
+				&__group {
+					animation-play-state: paused;
+				}
+			}
+		}
+	}
 
 	@keyframes scroll-x {
 		from {
@@ -99,15 +183,5 @@
 		to {
 			transform: translateY(var(--scroll-end));
 		}
-	}
-
-	/* Parent wrapper */
-	.wrapper {
-		display: flex;
-		flex-direction: column;
-		gap: var(--gap);
-		margin: auto;
-		margin-top: 50px;
-		max-width: 100vw;
 	}
 </style>

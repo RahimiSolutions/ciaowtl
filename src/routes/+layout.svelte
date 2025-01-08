@@ -80,17 +80,16 @@
 
 		/* // MOBILE */
 		/* Smallest size, suitable for small print or tags */
-		--mfs-300: 10px;
+		--mfs-300: clamp(0.625rem, 0.5731rem + 0.2766vw, 0.75rem);
 		/* Small text, good for body copy or less emphasized text */
-		--mfs-400: 12px;
+		--mfs-400: clamp(0.875rem, 0.8231rem + 0.2766vw, 1rem);
 		/* Medium text, good for body copy or subtitles */
-		--mfs-500: 14px;
+		--mfs-500: clamp(1rem, 0.9481rem + 0.2766vw, 1.125rem);
 		/* Large text, good for subtitles or small headings */
-		--mfs-600: 18px;
+		--mfs-600: clamp(1.3125rem, 1.2347rem + 0.4149vw, 1.5rem);
 		/* Extra large, good for titles */
-		--mfs-700: 20px;
-		/* 2X large, good for main headings */
-		--mfs-800: 28px;
+		--mfs-700: clamp(2rem, 1.8963rem + 0.5533vw, 2.25rem);
+
 
 		margin: 0;
 		padding: 0;

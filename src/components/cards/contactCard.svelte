@@ -4,6 +4,7 @@
 	import chatBubbles from '$lib/icons/chatbubbles.svg';
 	import phone from '$lib/icons/phone.svg';
 	import geo from '$lib/icons/geo.svg';
+	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 
 	let { type } = $props();
 	let state = $state({
@@ -35,15 +36,32 @@
 	}
 </script>
 
-<div class="card">
-	<img class="notch" src={squareCorner} alt="Square corner notch scalable vector graphic" />
-	<img class="icon" src={state.icon} alt="icon for contact card" />
-	<div class="content">
-		<div class="title"><h2>{state.title}</h2></div>
-		<div class="text"><p>{state.text}</p></div>
-		<div class="actionText"><a href={state.action} target="_blank">{state.actionText}</a></div>
-	</div>
-</div>
+<MediaQuery query="(min-width: 1024px)" let:matches>
+	{#if matches}
+		<div class="card">
+			<img class="notch" src={squareCorner} alt="Square corner notch scalable vector graphic" />
+			<img class="icon" src={state.icon} alt="icon for contact card" />
+			<div class="content">
+				<div class="title"><h2>{state.title}</h2></div>
+				<div class="text"><p>{state.text}</p></div>
+				<div class="actionText"><a href={state.action} target="_blank">{state.actionText}</a></div>
+			</div>
+		</div>
+	{/if}
+</MediaQuery>
+<MediaQuery query="(max-width: 1023px)" let:matches>
+	{#if matches}
+		<div class="mobile-card">
+			<img class="notch" src={squareCorner} alt="Square corner notch scalable vector graphic" />
+			<img class="icon" src={state.icon} alt="icon for contact card" />
+			<div class="content">
+				<div class="title"><h2>{state.title}</h2></div>
+				<div class="text"><p>{state.text}</p></div>
+				<div class="actionText"><a href={state.action} target="_blank">{state.actionText}</a></div>
+			</div>
+		</div>
+	{/if}
+</MediaQuery>
 
 <style lang="scss">
 	.card {
@@ -97,6 +115,64 @@
 						color: var(--green-500);
 						transform: translateY(-1px);
 					}
+				}
+			}
+		}
+	}
+	.mobile-card {
+		background-color: var(--green-200);
+		width: 90%;
+		max-width: 400px;
+		margin: auto;
+
+		height: 200px;
+		border-radius: 25px;
+		position: relative;
+		display: flex;
+		justify-content: end;
+		padding-right: 40px;
+
+		.notch {
+			position: absolute;
+			top: -2px;
+			left: -2px;
+			rotate: 180deg;
+		}
+		.icon {
+			position: absolute;
+			left: 5%;
+			top: 5%;
+		}
+
+		.content {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			color: var(--black);
+			.title {
+				margin-bottom: 8px;
+				h2 {
+					font-weight: 800;
+					font-size: var(--mfs-600);
+				}
+			}
+			.text {
+				margin-bottom: 24px;
+				p {
+					font-size: var(--mfs-500);
+				}
+			}
+			.actionText {
+				a {
+					text-decoration: none;
+					color: var(--black);
+					cursor: pointer;
+					width: fit-content;
+					font-size: var(--fs-500);
+					font-weight: 600;
+					border-bottom: 3px solid var(--black);
+					transition: all 0.2s;
+
 				}
 			}
 		}

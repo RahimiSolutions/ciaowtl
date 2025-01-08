@@ -23,7 +23,7 @@
 		class="corner-notch"
 		transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}
 	>
-		<img src={cornerNotch} alt="" />
+		<img class="cornernotch-svg" src={cornerNotch} alt="" />
 
 		{#if logo}
 			<div class="cta"  transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
@@ -50,8 +50,12 @@
 		align-items: start;
 		position: absolute;
 		z-index: 99;
-		bottom: 0px;
-		right: 0px;
+		bottom: -1px;
+		right: -1px;
+
+		.cornernotch-svg{
+			width: 250px;
+		}
 		.cta {
 			position: absolute;
 			height: 100%;
@@ -59,10 +63,10 @@
 			justify-content: center;
 			align-items: end;
 			bottom: 10%;
-			left: 20%;
+			left: 10%;
 
 			img {
-				max-width: 150%;
+				max-width: 80%;
 				transition: 0.2s ease-in-out;
 				&:hover {
 					scale: 1.01;

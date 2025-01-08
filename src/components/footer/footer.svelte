@@ -8,99 +8,107 @@
 	import instagram from '$lib/icons/instagram.svg';
 	import linkedin from '$lib/icons/linkedin.svg';
 	import whatsapp from '$lib/icons/whatsapp.svg';
+	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 </script>
 
-<footer>
-	<div class="notch">
-		<div class="container">
-			<img src={notch} alt="scalable vector graphic of a top notch" />
-			<div class="slogan"><p>Time is money, <br /> and we save you both</p></div>
-		</div>
-	</div>
-	<div class="logo">
-		<a href="/#top"><img src={logo} alt="logo Ciao World Transport & Logistics" /></a>
-	</div>
-	<div class="content">
-		<div class="left">
-			<div class="contact">
-				<h2>Contact Us</h2>
-				<ul>
-					<li><a href="mailto:info@ciao-wtl.com" target="_blank">info@ciao-wtl.com</a></li>
-					<li><a href="tel:+494075695565" target="_blank">+49 4075 695565</a></li>
-				</ul>
-			</div>
-			<div class="business-hours">
-				<h2>Business Hours</h2>
-				<ul>
-					<li>Mon - Fri : 8am - 5pm</li>
-				</ul>
-			</div>
-		</div>
-		<div class="right">
-			<div class="sitemap">
-				<ul>
-					<li><a href="/#services">Services</a></li>
-					<li><a href="/#reviews">Reviews</a></li>
-					<li><a href="/#containers">Containers</a></li>
-					<li><a href="/#contact">Contact</a></li>
-				</ul>
-			</div>
-			<div class="links">
-				<ul>
-					<li><a href="https://wa.me/4917657966211" target="_blank">Get a Quote</a></li>
-					<li><a href="/imprint">Imprint</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="line"></div>
-	<div class="bottom">
-		<div class="left">
-			<p>Copyright © 2025 Ciao! World Transport & Logistics UG. All Rights Reserved</p>
-		</div>
-		<div class="right">
-			<div class="back-to-top">
-				<div class="to-top-notch">
-					<img src={backToTop} alt="" />
+<MediaQuery query="(max-width: 768px)" let:matches>
+	{#if matches}{/if}
+</MediaQuery>
+<MediaQuery query="(min-width: 769px)" let:matches>
+	{#if matches}
+		<footer>
+			<div class="notch">
+				<div class="container">
+					<img src={notch} alt="scalable vector graphic of a top notch" />
+					<div class="slogan"><p>Time is money, <br /> and we save you both</p></div>
 				</div>
-				<div class="content">
-					<div class="arrow">
-						<Arrow width={36} fill="#000" rotation={90} onClick={() => window.scrollTo(0, 0)} />
+			</div>
+			<div class="logo">
+				<a href="/#top"><img src={logo} alt="logo Ciao World Transport & Logistics" /></a>
+			</div>
+			<div class="content">
+				<div class="left">
+					<div class="contact">
+						<h2>Contact Us</h2>
+						<ul>
+							<li><a href="mailto:info@ciao-wtl.com" target="_blank">info@ciao-wtl.com</a></li>
+							<li><a href="tel:+494075695565" target="_blank">+49 4075 695565</a></li>
+						</ul>
 					</div>
-					<div class="text">
-						<p>Back To Top</p>
+					<div class="business-hours">
+						<h2>Business Hours</h2>
+						<ul>
+							<li>Mon - Fri : 8am - 5pm</li>
+						</ul>
+					</div>
+				</div>
+				<div class="right">
+					<div class="sitemap">
+						<ul>
+							<li><a href="/#services">Services</a></li>
+							<li><a href="/#reviews">Reviews</a></li>
+							<li><a href="/#containers">Containers</a></li>
+							<li><a href="/#contact">Contact</a></li>
+						</ul>
+					</div>
+					<div class="links">
+						<ul>
+							<li><a href="https://wa.me/4917657966211" target="_blank">Get a Quote</a></li>
+							<li><a href="/imprint">Imprint</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
-			<div class="socials">
-				<ul>
-					<li>
-						<a
-							href="https://www.facebook.com/profile.php?id=100095520884839&locale=nb_NO"
-							target="_blank"><img src={facebook} alt="facebook icon" /></a
-						>
-					</li>
-					<li>
-						<a href="https://www.instagram.com/ciao_wtl/" target="_blank"
-							><img src={instagram} alt="instagram icon" /></a
-						>
-					</li>
-					<li>
-						<a
-							href="https://www.linkedin.com/company/ciao-world-transport-logistics/"
-							target="_blank"><img src={linkedin} alt="linkedin icon" /></a
-						>
-					</li>
-					<li>
-						<a href="https://wa.me/4917657966211" target="_blank"
-							><img src={whatsapp} alt="whatsapp icon" /></a
-						>
-					</li>
-				</ul>
+			<div class="line"></div>
+			<div class="bottom">
+				<div class="left">
+					<p>Copyright © 2025 Ciao! World Transport & Logistics UG. All Rights Reserved</p>
+				</div>
+				<div class="right">
+					<div class="back-to-top">
+						<div class="to-top-notch">
+							<img src={backToTop} alt="" />
+						</div>
+						<div class="content">
+							<div class="arrow">
+								<Arrow width={36} fill="#000" rotation={90} onClick={() => window.scrollTo(0, 0)} />
+							</div>
+							<div class="text">
+								<p>Back To Top</p>
+							</div>
+						</div>
+					</div>
+					<div class="socials">
+						<ul>
+							<li>
+								<a
+									href="https://www.facebook.com/profile.php?id=100095520884839&locale=nb_NO"
+									target="_blank"><img src={facebook} alt="facebook icon" /></a
+								>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/ciao_wtl/" target="_blank"
+									><img src={instagram} alt="instagram icon" /></a
+								>
+							</li>
+							<li>
+								<a
+									href="https://www.linkedin.com/company/ciao-world-transport-logistics/"
+									target="_blank"><img src={linkedin} alt="linkedin icon" /></a
+								>
+							</li>
+							<li>
+								<a href="https://wa.me/4917657966211" target="_blank"
+									><img src={whatsapp} alt="whatsapp icon" /></a
+								>
+							</li>
+						</ul>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-</footer>
+		</footer>
+	{/if}
+</MediaQuery>
 
 <style lang="scss">
 	footer {
