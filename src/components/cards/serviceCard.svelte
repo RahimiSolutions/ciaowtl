@@ -62,6 +62,17 @@
 	function flipCard() {
 		flipped = !flipped;
 	}
+
+	let animateArrow = false;
+
+	function handleOverlayClick() {
+		animateArrow = true;
+
+		// Reset the animation state after it completes
+		setTimeout(() => {
+			animateArrow = false;
+		}, 1000); // Match the duration of the `arrowMove` animation
+	}
 </script>
 
 <MediaQuery query="(min-width: 1024px)" let:matches>
@@ -107,11 +118,11 @@
 			<div class="inner">
 				<div class="background-image" style="background-image: url({picture});"></div>
 				<div class="side front">
-					<div class="overlay"></div>
+					<div class="overlay" on:click={handleOverlayClick}></div>
 					<div class="title">{title}</div>
 					<img src={corner} alt="corner" class="corner" />
 					<div class="circle" on:click|stopPropagation={flipCard}>
-						<div class="arrow">
+						<div class="arrow" class:animate={animateArrow}>
 							<Arrow width={36} fill="#000" rotation={180} />
 						</div>
 					</div>
@@ -124,7 +135,7 @@
 				</div>
 			</div>
 		</div>
-		{/if}
+	{/if}
 </MediaQuery>
 
 <style lang="scss">
@@ -334,7 +345,7 @@
 						position: absolute;
 						bottom: -1px;
 						right: -1px;
-						width: 40%;
+						width: 150px;
 					}
 
 					.circle {
@@ -362,19 +373,15 @@
 							transition:
 								transform 0.6s ease-in-out,
 								opacity 0.6s ease-in-out;
-						}
 
-						&:hover {
-							background-color: var(--green-500);
-
-							.arrow {
+							&.animate {
 								animation: arrowMove 1s ease forwards;
 							}
-						}
 
-						// Reset animation smoothly when hover is removed
-						&:not(:hover) .arrow {
-							animation: arrowReturn 0.6s ease forwards;
+							// Reset animation smoothly when `animate` is removed
+							&:not(.animate) {
+								animation: arrowReturn 0.6s ease forwards;
+							}
 						}
 					}
 				}

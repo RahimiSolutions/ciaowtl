@@ -52,8 +52,11 @@
 <MediaQuery query="(max-width: 1023px)" let:matches>
 	{#if matches}
 		<div class="mobile-card">
-			<img class="notch" src={squareCorner} alt="Square corner notch scalable vector graphic" />
-			<img class="icon" src={state.icon} alt="icon for contact card" />
+			<div class="left">
+				<img class="notch" src={squareCorner} alt="Square corner notch scalable vector graphic" />
+				<img class="icon" src={state.icon} alt="icon for contact card" />
+			</div>
+
 			<div class="content">
 				<div class="title"><h2>{state.title}</h2></div>
 				<div class="text"><p>{state.text}</p></div>
@@ -127,24 +130,30 @@
 
 		height: 200px;
 		border-radius: 25px;
-		position: relative;
+
 		display: flex;
-		justify-content: end;
+		justify-content: space-between;
 		padding-right: 40px;
 
-		.notch {
-			position: absolute;
-			top: -2px;
-			left: -2px;
-			rotate: 180deg;
-		}
-		.icon {
-			position: absolute;
-			left: 5%;
-			top: 5%;
+		.left {
+			width: 40%;
+			height: 100%;
+			position: relative;
+			.notch {
+				position: absolute;
+				top: -2px;
+				left: -2px;
+				rotate: 180deg;
+			}
+			.icon {
+				position: absolute;
+				left: 16%;
+				top: 10%;
+			}
 		}
 
 		.content {
+			width: 60%;
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
@@ -172,7 +181,6 @@
 					font-weight: 600;
 					border-bottom: 3px solid var(--black);
 					transition: all 0.2s;
-
 				}
 			}
 		}

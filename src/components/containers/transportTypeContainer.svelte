@@ -4,6 +4,7 @@
 	import TransportType from '../cards/transportType.svelte';
 	import { writable } from 'svelte/store';
 	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
+	import { Spring } from 'svelte/motion';
 
 	const services = [
 		{ number: '01', text: 'Truck' },
@@ -22,11 +23,41 @@
 
 	let containerWidth: number;
 	let cardWidth: number;
-	const position = writable(0);
+	let position = new Spring(0, { stiffness: 0.9, damping: 0.5 });
 	let isDragging = false;
 	let startX: number;
 	let startPosition: number;
 	let currentIndex = 0;
+	let velocity = 0;
+	let lastX: number;
+	let lastTime: number;
+
+	let velocityTracker = { x: 0, t: 0 };
+
+	function updateVelocity(x: number, t: number) {
+		const dt = t - velocityTracker.t;
+		velocityTracker.x = (x - velocityTracker.x) / dt;
+		velocityTracker.t = t;
+	}
+
+	function decelerate(timestamp: number) {
+		if (!isDragging) {
+			const elapsed = timestamp - lastTime;
+			velocity *= Math.pow(0.95, elapsed / 16);
+			position.target += velocity * elapsed;
+
+			if (Math.abs(velocity) > 0.1) {
+				requestAnimationFrame(decelerate);
+			} else {
+				snapToNearest();
+			}
+		}
+	}
+
+	function snapToNearest() {
+		const closestIndex = Math.round(-position.current / (cardWidth + 24));
+		position.set(-closestIndex * (cardWidth + 24), { hard: false });
+	}
 
 	function next() {
 		if (currentIndex < services.length - Math.floor(containerWidth / cardWidth)) {
@@ -42,52 +73,37 @@
 		}
 	}
 
-	// Handle both mouse and touch events
 	function handleStart(event: MouseEvent | TouchEvent) {
 		isDragging = true;
 		startX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-		position.subscribe((value) => {
-			startPosition = value;
-		})();
+		lastX = startX;
+		lastTime = Date.now();
+		velocity = 0;
+		startPosition = position.current;
+		velocityTracker = { x: startX, t: lastTime };
 	}
-
-	let lastMoveTime = 0;
 
 	function handleMove(event: MouseEvent | TouchEvent) {
 		if (!isDragging) return;
-
-		const now = performance.now();
-		// Throttle to 60 FPS (16.7ms per frame)
-		if (now - lastMoveTime < 16.7) return;
-		lastMoveTime = now;
-
 		const currentX = event instanceof MouseEvent ? event.clientX : event.touches[0].clientX;
-		const dx = currentX - startX;
-		const newPosition = startPosition + dx;
+		const currentTime = Date.now();
 
+		updateVelocity(currentX, currentTime);
+
+		const dx = currentX - lastX;
+		const newPosition = position.current + dx;
 		const maxPosition = 0;
-		const minPosition = -(services.length * (cardWidth + 24) - containerWidth);
-		position.set(Math.max(minPosition, Math.min(maxPosition, newPosition)));
+		const minPosition = -(services.length - 1) * (cardWidth + 24) - containerWidth;
+		position.target = Math.max(minPosition, Math.min(maxPosition, newPosition));
+
+		lastX = currentX;
+		lastTime = currentTime;
 	}
 
 	function handleEnd() {
 		if (!isDragging) return;
 		isDragging = false;
-
-		let currentPosition: number = 0;
-		position.subscribe((value) => {
-			currentPosition = value;
-		})();
-
-		const closestIndex = Math.round(-currentPosition / cardWidth);
-		position.set(-closestIndex * cardWidth);
-
-		// Add easing for snapping
-		const container = document.querySelector('.card-container') as HTMLElement;
-		container.style.transition = 'transform 0.3s ease-out';
-		setTimeout(() => {
-			container.style.transition = '';
-		}, 300);
+		requestAnimationFrame(decelerate);
 	}
 </script>
 
@@ -105,7 +121,7 @@
 					on:touchstart={handleStart}
 					on:touchmove={handleMove}
 					on:touchend={handleEnd}
-					style="transform: translateX({$position}px);"
+					style="transform: translateX({position.current}px);"
 				>
 					{#each services as service}
 						<!-- svelte-ignore a11y_click_events_have_key_events -->
@@ -143,7 +159,7 @@
 					on:touchstart={handleStart}
 					on:touchmove={handleMove}
 					on:touchend={handleEnd}
-					style="transform: translateX({$position}px);"
+					style="transform: translateX({position.current}px);"
 				>
 					<!-- svelte-ignore a11y_click_events_have_key_events -->
 					{#each services as service}

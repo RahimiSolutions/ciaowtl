@@ -1086,7 +1086,7 @@
 		.about {
 			width: 80%;
 			max-width: 1600px;
-			margin: 100px auto 0 auto;
+			margin: 100px auto 50px auto;
 			.top {
 				display: flex;
 				flex-direction: column;

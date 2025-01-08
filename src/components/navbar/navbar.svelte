@@ -537,6 +537,7 @@
 			cursor: pointer;
 			font-weight: 600;
 			margin: 0 24px;
+			border: none;
 			a {
 				text-decoration: none;
 				color: var(--white);
