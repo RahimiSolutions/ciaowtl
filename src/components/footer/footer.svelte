@@ -3,7 +3,10 @@
 	import logo from '$lib/images/logo.png';
 	import backToTop from '$lib/images/ToTopNotch.svg';
 	import Arrow from '$lib/icons/arrow.svelte';
+	import corner from '$lib/images/corner.svg';
 
+	import email from '$lib/icons/email.svg';
+	import call from '$lib/icons/call.svg';
 	import facebook from '$lib/icons/facebook.svg';
 	import instagram from '$lib/icons/instagram.svg';
 	import linkedin from '$lib/icons/linkedin.svg';
@@ -55,6 +58,13 @@
 						</ul>
 					</div>
 				</div>
+			</div>
+			<div class="plug">
+				<img class="above" src={corner} alt="scalable vector graphic of corner" />
+				<p>
+					<a href="https://www.rahimisolutions.com/">Website by Rahimi Solutions</a>
+				</p>
+				<img class="below" src={corner} alt="scalable vector graphic of corner" />
 			</div>
 			<div class="line"></div>
 			<div class="bottom">
@@ -119,15 +129,20 @@
 				<div class="top">
 					<div class="contact">
 						<h2>Contact Us</h2>
+						<p class="subtext">We're here for you - Mon - Fri : 8am - 5pm</p>
 						<ul>
-							<li><a href="mailto:info@ciao-wtl.com" target="_blank">info@ciao-wtl.com</a></li>
-							<li><a href="tel:+494075695565" target="_blank">+49 4075 695565</a></li>
-						</ul>
-					</div>
-					<div class="business-hours">
-						<h2>Business Hours</h2>
-						<ul>
-							<li>Mon - Fri : 8am - 5pm</li>
+							<li>
+								<a href="mailto:info@ciao-wtl.com" target="_blank">
+									<img src={email} alt="email icon" />
+									info@ciao-wtl.com
+								</a>
+							</li>
+							<li>
+								<a href="tel:+494075695565" target="_blank">
+									<img src={call} alt="phone icon" />
+									+49 4075 695565
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -180,7 +195,19 @@
 				</div>
 			</div>
 			<div class="bottom">
-				<div class="left">
+				<div class="plug">
+					<img class="above" src={corner} alt="scalable vector graphic of corner" />
+					<p>
+						<a href="https://www.rahimisolutions.com/">Website by Rahimi Solutions</a>
+					</p>
+					<img class="below" src={corner} alt="scalable vector graphic of corner" />
+				</div>
+				<div class="back-to-top">
+					<div class="arrow">
+						<Arrow width={36} fill="#000" rotation={90} onClick={() => window.scrollTo(0, 0)} />
+					</div>
+				</div>
+				<div class="end">
 					<p>Copyright © 2025 Ciao! World Transport & Logistics UG. All Rights Reserved</p>
 				</div>
 			</div>
@@ -300,6 +327,36 @@
 				}
 			}
 		}
+
+		.plug {
+			position: absolute;
+			right: 0;
+			bottom: 20%;
+			display: flex;
+			align-items: end;
+			flex-direction: column;
+			.above {
+				width: 32px;
+				margin-bottom: -1px;
+				transform: scaleX(-1);
+			}
+			.below {
+				margin-top: -1px;
+				rotate: 180deg;
+				width: 32px;
+			}
+			p {
+				width: fit-content;
+				background-color: var(--white);
+				padding: 4px 16px;
+				border-radius: 16px 0px 0px 16px;
+				a {
+					font-size: var(--fs-500);
+					color: var(--black);
+				}
+			}
+		}
+
 		a {
 			color: var(--white);
 			text-decoration: none;
@@ -337,7 +394,7 @@
 							z-index: 1;
 							max-width: 100%;
 							height: auto;
-							margin-bottom: -42px;
+							margin-bottom: clamp(-3.25rem, -8.5393rem + 8.2645vw, -2.625rem);
 						}
 					}
 
@@ -396,7 +453,7 @@
 		color: var(--white);
 		width: 96vw;
 		margin: 100px auto 2vw auto;
-		padding: 20px;
+		padding: 20px 0px;
 		position: relative;
 
 		.notch {
@@ -432,17 +489,21 @@
 			align-items: baseline;
 			justify-content: space-evenly;
 			gap: 40px;
+			padding: 0px 20px;
 			.top {
 				width: 100%;
 				display: flex;
 				justify-content: space-between;
 				.contact {
-				width: 100%;
-
+					width: 100%;
+					.subtext {
+						font-size: var(--mfs-300);
+						margin-bottom: 16px;
+					}
 					h2 {
 						width: fit-content;
 						font-size: var(--mfs-600);
-						margin-bottom: 16px;
+						margin-bottom: 4px;
 						border-bottom: 1px solid white;
 					}
 					ul {
@@ -450,23 +511,14 @@
 							font-size: var(--mfs-500);
 							list-style-type: none;
 							margin-bottom: 16px;
-						}
-					}
-				}
-				.business-hours {
-				width: 100%;
-
-					h2 {
-						width: fit-content;
-						font-size: var(--mfs-600);
-						margin-bottom: 16px;
-						border-bottom: 1px solid white;
-					}
-					ul {
-						li {
-							font-size: var(--mfs-500);
-							list-style-type: none;
-							margin-bottom: 16px;
+							a {
+								display: flex;
+								gap: 8px;
+								align-items: center;
+								img {
+									width: 24px;
+								}
+							}
 						}
 					}
 				}
@@ -477,6 +529,7 @@
 				justify-content: space-between;
 				.sitemap {
 					width: 100%;
+
 					h2 {
 						width: fit-content;
 						font-size: var(--mfs-600);
@@ -498,6 +551,9 @@
 				}
 				.socials {
 					width: 100%;
+					display: flex;
+					flex-direction: column;
+					align-items: center;
 					h2 {
 						width: fit-content;
 						font-size: var(--mfs-600);
@@ -538,10 +594,57 @@
 		.bottom {
 			display: flex;
 			position: relative;
-			.left {
+			flex-direction: column;
+			gap: 24px;
+			.plug {
+				margin-left: -1px;
+				display: flex;
+				flex-direction: column;
+				.above {
+					width: 32px;
+					margin-bottom: -2px;
+				}
+				.below {
+					margin-top: -2px;
+					rotate: 180deg;
+					transform: scaleX(-1);
+					width: 32px;
+				}
+				p {
+					width: fit-content;
+					background-color: var(--white);
+					padding: 2px 8px;
+					border-radius: 0px 16px 16px 0px;
+					a {
+						color: var(--black);
+					}
+				}
+			}
+			.back-to-top {
+				position: absolute;
+				right: 10%;
+				bottom: 50%;
+
+				background-color: var(--white);
+
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				border-radius: 500px;
+				height: 50px;
+				width: 50px;
+
+				.arrow {
+					display: flex;
+					justify-content: center;
+				}
+			}
+			.end {
 				width: 100%;
 				display: flex;
 				align-items: center;
+				justify-content: center;
 				p {
 					opacity: 0.6;
 					font-size: var(--mfs-300);

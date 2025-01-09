@@ -257,7 +257,8 @@
 					</div>
 					<div class="partner-marquee">
 						<LogoMarquee />
-						<img src={cornerNotchGreen} alt="" />
+						<img src={cornerNotchGreen} alt="Scalable Vector Graphic of corner notch" />
+						<p><a href="https://wa.me/4917657966211">Let's deliver for you</a></p>
 					</div>
 				</div>
 			</div>
@@ -378,7 +379,8 @@
 					<BenefitCard
 						title="Multilingual<br/>Expertise"
 						text=" Communication without<br/> barriers"
-						imageUrl={multilingual} flipped={true}
+						imageUrl={multilingual}
+						flipped={true}
 					/>
 					<BenefitCard
 						title="Seamless<br/>Process"
@@ -466,7 +468,6 @@
 							<div class="text">Shipments<span class="highlight">Successfully Delivered</span></div>
 						</div>
 					</div>
-					<hr />
 				</div>
 
 				<div class="partners">
@@ -477,8 +478,10 @@
 						</p>
 					</div>
 					<div class="partner-marquee">
-						<LogoMarquee imgSize="50px"/>
-						<img src={cornerNotchGreen} alt="" />
+						<LogoMarquee imgSize="50px" />
+						<img src={cornerNotchGreen} alt="Scalable Vector graphic of green notch" />
+						<p><a href="https://wa.me/4917657966211">Let's deliver for you</a></p>
+
 					</div>
 				</div>
 			</div>
@@ -865,15 +868,27 @@
 					}
 				}
 				.partner-marquee {
-					padding: 50px 0;
-					background-color: var(--green-600);
+					padding: 75px 0;
+					background-color: var(--green-200);
 					position: relative;
 					img {
 						position: absolute;
 						top: 99%;
 						right: 0;
-						rotate: 180deg;
-						transform: scaleX(-1);
+					}
+					a{
+						color: var(--black);
+						text-decoration: none;
+						position: absolute;
+						top: 100%;
+						right: 0;
+						font-size: var(--fs-600);
+						transform: translate(-25%, 50%);
+						transition: 0.2s ease-in-out;
+						&:hover{
+							color: var(--green-500);
+							cursor: pointer;
+						}
 					}
 				}
 			}
@@ -936,6 +951,8 @@
 			}
 		}
 	}
+
+	// MOBILE _ STYLING
 	.container-mobile {
 		hr {
 			background-color: var(--white);
@@ -958,7 +975,7 @@
 						img {
 							border-radius: 50px;
 							left: 50%;
-							transform: translateX(-50%);
+							transform: translateX(-60%);
 							position: absolute;
 							height: 100%;
 							z-index: 0;
@@ -987,17 +1004,16 @@
 								backdrop-filter: blur(4px);
 								background-color: rgba(67, 86, 100, 0.2);
 								border-radius: 15px 15px 0 0;
-								padding: 0 24px;
+								padding: 8px 16px 0px 16px;
 								width: fit-content;
 							}
 							.bottomtext {
 								backdrop-filter: blur(8px);
 								background-color: rgba(67, 86, 100, 0.2);
 								border-radius: 0 15px 15px 15px;
-								padding: 0 24px;
+								padding: 0 16px 16px 16px;
 								display: flex;
 								flex-direction: column;
-								padding-bottom: 8px;
 								.sub-heading {
 									font-size: var(--mfs-400);
 									font-weight: 400;
@@ -1055,7 +1071,7 @@
 					width: 100%;
 
 					.title {
-						text-transform: uppercase;
+						// text-transform: uppercase;
 						color: var(--green-500);
 						width: 100%;
 						text-align: start;
@@ -1063,18 +1079,21 @@
 						justify-content: start;
 
 						h2 {
+							// font-size: var(--mfs-700);
+							// font-weight: 400;
+							// max-width: 90%;
 							font-size: var(--mfs-700);
-							font-weight: 400;
-							max-width: 90%;
+							font-weight: 600;
+							color: var(--black);
 						}
 					}
 					.text {
 						margin-top: 16px;
-						font-size: var(--mfs-600);
+						font-size: var(--mfs-500);
 
 						font-weight: 400;
 						color: var(--black);
-						max-width: 100%;
+						max-width: 90%;
 						text-align: start;
 					}
 					.button {
@@ -1177,7 +1196,6 @@
 					justify-content: center;
 					align-items: center;
 					.button {
-						
 					}
 				}
 			}
@@ -1187,7 +1205,7 @@
 			.text {
 				display: flex;
 				flex-direction: column;
-				width: 100%;
+				width: 98%;
 				margin: auto;
 				padding-bottom: 24px;
 				position: relative;
@@ -1206,12 +1224,12 @@
 					width: 50%;
 					p {
 						padding-right: 8px;
-						font-size: var(--mfs-600);
+						font-size: var(--mfs-500);
 						color: var(--green-500);
 						font-weight: 500;
 						text-align: end;
 						.bold {
-							font-size: var(--mfs-600);
+							font-size: var(--mfs-500);
 							color: var(--green-500);
 							font-weight: 900;
 						}
@@ -1226,9 +1244,9 @@
 						text-align: start;
 
 						font-weight: 400;
-						font-size: var(--mfs-400);
+						font-size: var(--mfs-300);
 						.bold {
-							font-size: var(--mfs-600);
+							font-size: var(--mfs-500);
 							color: var(--green-500);
 							font-weight: 900;
 						}
@@ -1242,18 +1260,11 @@
 			}
 			.stats {
 				position: relative;
-				.vr {
-					position: absolute;
-					left: 50%;
-					transform: translateX(-50%);
-					height: 100%;
-					border-left: 1px solid var(--green-400);
-				}
+				
 				.stats-grid {
 					display: grid;
-					grid-template-columns: repeat(2, 1fr);
-					gap: 20px;
-					padding-top: 50px;
+					grid-template-columns: repeat(1, 1fr);
+					padding-top: 24px;
 				}
 				.grid-item {
 					display: flex;
@@ -1261,7 +1272,7 @@
 					align-items: center;
 					justify-content: center;
 					padding: 20px;
-					border-radius: 10px;
+					border-bottom: 1px solid var(--green-400);
 				}
 				.number {
 					font-size: var(--mfs-700);
@@ -1295,15 +1306,24 @@
 				}
 				.partner-marquee {
 					padding: 36px 0;
-					background-color: var(--green-600);
+					background-color: var(--green-200);
 					position: relative;
 					img {
 						width: 250px;
 						position: absolute;
 						top: 99%;
 						right: 0;
-						rotate: 180deg;
-						transform: scaleX(-1);
+					}
+					a{
+						color: var(--black);
+						text-decoration: none;
+						font-size: var(--mfs-500);
+						font-weight: 600;
+						position: absolute;
+						top: 100%;
+						right: 0;
+						transform: translate(-15%, 70%);
+						
 					}
 				}
 			}
@@ -1365,7 +1385,6 @@
 				gap: 24px;
 				max-width: 1024px;
 				margin: 50px auto;
-
 			}
 		}
 	}

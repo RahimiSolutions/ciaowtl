@@ -23,7 +23,7 @@
 
 	let containerWidth: number;
 	let cardWidth: number;
-	let position = new Spring(0, { stiffness: 0.9, damping: 0.5 });
+	let position = new Spring(0, { stiffness: 3, damping: 0.1 });
 	let isDragging = false;
 	let startX: number;
 	let startPosition: number;
@@ -118,8 +118,8 @@
 					on:mousemove={handleMove}
 					on:mouseup={handleEnd}
 					on:mouseleave={handleEnd}
-					on:touchstart={handleStart}
-					on:touchmove={handleMove}
+					on:touchstart|passive={handleStart}
+					on:touchmove|passive={handleMove}
 					on:touchend={handleEnd}
 					style="transform: translateX({position.current}px);"
 				>
@@ -156,8 +156,8 @@
 					on:mousemove={handleMove}
 					on:mouseup={handleEnd}
 					on:mouseleave={handleEnd}
-					on:touchstart={handleStart}
-					on:touchmove={handleMove}
+					on:touchstart|passive={handleStart}
+					on:touchmove|passive={handleMove}
 					on:touchend={handleEnd}
 					style="transform: translateX({position.current}px);"
 				>

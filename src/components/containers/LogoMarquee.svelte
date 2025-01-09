@@ -1,5 +1,12 @@
 <script>
-	import ciao from '$lib/images/logo.png';
+	import maersk from '$lib/images/maersk-group-logo.svg';
+	import cosco from '$lib/images/COSCO_logo.svg';
+	import cmacgm from '$lib/images/cma-cgm-logo.svg';
+	import evergreen from '$lib/images/evergreen-logo.svg';
+	import hapag from '$lib/images/hapag-lloyd-2.svg';
+	import msc from '$lib/images/Mediterranean_Shipping_Company_logo.svg';
+
+
 	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 	/**
 	 * @type {HTMLElement}
@@ -22,14 +29,20 @@
 		<article class="wrapper" bind:this={wrapper} style="--imgSize: {imgSize};">
 			<div class="marquee" bind:this={marquee1}>
 				<div class="marquee__group">
-					<img src={ciao} alt="Sarpsborg Moske" />
-					<img src={ciao} alt="CiaoWTL" />
-					<img src={ciao} alt="Brightpath Studio" />
+					<img src={maersk} alt="Maersk Group logo" />
+					<img src={cosco} alt="COSCO (China Ocean Shipping (Group) Company)" />
+					<img src={cmacgm} alt="CMA CGM logo" />
+					<img src={evergreen} alt="Eevergreen logo" />
+					<img src={hapag} alt="Hapag Lloyd logo" />
+					<img src={msc} alt="Mediterranean Shipping Company logo" />
 				</div>
 				<div aria-hidden="true" class="marquee__group">
-					<img src={ciao} alt="Sarpsborg Moske" />
-					<img src={ciao} alt="CiaoWTL" />
-					<img src={ciao} alt="Brightpath Studio" />
+					<img src={maersk} alt="Maersk Group logo" />
+					<img src={cosco} alt="COSCO (China Ocean Shipping (Group) Company)" />
+					<img src={cmacgm} alt="CMA CGM logo" />
+					<img src={evergreen} alt="Eevergreen logo" />
+					<img src={hapag} alt="Hapag Lloyd logo" />
+					<img src={msc} alt="Mediterranean Shipping Company logo" />
 				</div>
 			</div>
 		</article>
@@ -40,14 +53,20 @@
 		<article class="mobile-wrapper" bind:this={wrapper} style="--imgSize: {imgSize};">
 			<div class="marquee" bind:this={marquee1}>
 				<div class="marquee__group">
-					<img src={ciao} alt="Sarpsborg Moske" />
-					<img src={ciao} alt="CiaoWTL" />
-					<img src={ciao} alt="Brightpath Studio" />
+					<img src={maersk} alt="Maersk Group logo" />
+					<img src={cosco} alt="COSCO (China Ocean Shipping (Group) Company)" />
+					<img src={cmacgm} alt="CMA CGM logo" />
+					<img src={evergreen} alt="Eevergreen logo" />
+					<img src={hapag} alt="Hapag Lloyd logo" />
+					<img src={msc} alt="Mediterranean Shipping Company logo" />
 				</div>
 				<div aria-hidden="true" class="marquee__group">
-					<img src={ciao} alt="Sarpsborg Moske" />
-					<img src={ciao} alt="CiaoWTL" />
-					<img src={ciao} alt="Brightpath Studio" />
+					<img src={maersk} alt="Maersk Group logo" />
+					<img src={cosco} alt="COSCO (China Ocean Shipping (Group) Company)" />
+					<img src={cmacgm} alt="CMA CGM logo" />
+					<img src={evergreen} alt="Eevergreen logo" />
+					<img src={hapag} alt="Hapag Lloyd logo" />
+					<img src={msc} alt="Mediterranean Shipping Company logo" />
 				</div>
 			</div>
 		</article>
@@ -72,7 +91,6 @@
 		flex-direction: column;
 		gap: var(--gap);
 		margin: auto;
-		margin-top: 50px;
 		max-width: 100vw;
 
 		.marquee {
