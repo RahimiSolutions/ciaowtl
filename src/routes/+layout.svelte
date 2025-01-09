@@ -1,27 +1,8 @@
 <script lang="ts">
-	import { language, locale } from '$lib/i18n/i18n';
-	import { onMount } from 'svelte';
     import '../lib/styles/fonts.css';
 	import Navbar from '../components/navbar/navbar.svelte';
 	import Footer from '../components/footer/footer.svelte';
 
-	var userLang = navigator.language;
-	// nb-NO
-
-	function setLanguage() {
-		if (userLang === 'nb-NO' || userLang === 'no' || userLang === 'nn') {
-			$language = 'no';
-			$locale = 'no';
-		} else {
-			$language = 'en';
-			$locale = 'en';
-		}
-	}
-
-	onMount(() => {
-		userLang = navigator.language || 'en'; // Default to 'en' if navigator.language is not defined.
-		setLanguage();
-	});
 </script>
 
 <svelte:head>
