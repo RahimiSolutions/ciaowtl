@@ -43,10 +43,11 @@
 	function decelerate(timestamp: number) {
 		if (!isDragging) {
 			const elapsed = timestamp - lastTime;
-			velocity *= Math.pow(0.95, elapsed / 16);
+			velocity *= Math.pow(0.9, elapsed / 16); // Increased decay rate
 			position.target += velocity * elapsed;
 
-			if (Math.abs(velocity) > 0.1) {
+			if (Math.abs(velocity) > 0.05) {
+				// Lower threshold for stopping
 				requestAnimationFrame(decelerate);
 			} else {
 				snapToNearest();
@@ -93,7 +94,7 @@
 		const dx = currentX - lastX;
 		const newPosition = position.current + dx;
 		const maxPosition = 0;
-		const minPosition = -(services.length - 1) * (cardWidth + 24) - containerWidth;
+		const minPosition = -((services.length - 1) * (cardWidth + 24));
 		position.target = Math.max(minPosition, Math.min(maxPosition, newPosition));
 
 		lastX = currentX;
