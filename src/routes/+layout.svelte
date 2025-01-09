@@ -26,19 +26,19 @@
 
 <svelte:head>
 	<title>Ciao World Transport & Logistics</title>
-	<meta name="description" content="FILL IN DESCRIPTION" />
+	<meta name="description" content="No matter where your cargo needs to go, we have the infrastructure to deliver it effectively." />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="robots" content="index, follow" />
 	<meta name="content-language" content="en" />
-	<meta name="keywords" content="FILL IN KEYWORDS" />
-	<meta property="og:title" content="FILL IN TITLE" />
-	<meta property="og:description" content="FILL IN DESCRIPTION" />
+	<meta name="keywords" content="Logistics, International shipping, Transportation, Freight forwarding, import, export, Hamburg, Germany, International transport" />
+	<meta property="og:title" content="Transport Made Easy - CIAO" />
+	<meta property="og:description" content="From A to Z, we handle your shipments with care and precision." />
 	<meta property="og:type" content="website" />
 	<!--<meta property="og:url" content="https://www.domain.com" />
-	 <meta property="og:image" content="https://www.domain.com/images/og-image.jpg" /> 
+	 <meta property="og:image" content="https://www.domain.com/images/og-image.jpg" /> -->
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />-->
+	<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
 	<link rel="icon" type="image/svg+xml" href="/favicon.png" />
 </svelte:head>
 
