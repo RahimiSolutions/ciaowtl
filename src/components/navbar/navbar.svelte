@@ -144,7 +144,7 @@
 		{/if}
 	{/if}
 </MediaQuery>
-<MediaQuery query="(min-width:769px)" let:matches>
+<MediaQuery query="(min-width: 769px) and (max-width: 1499px)" let:matches>
 	{#if matches}
 		<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
 		{#if !showTopMenu}
@@ -222,7 +222,7 @@
 		{/if}
 	{/if}
 </MediaQuery>
-<MediaQuery query="(min-width: 1800px)" let:matches>
+<MediaQuery query="(min-width: 1500px)" let:matches>
 	{#if matches}
 		<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
 		{#if !showTopMenu}
@@ -329,6 +329,7 @@
 			cursor: pointer;
 			font-weight: 600;
 			margin: 0 24px;
+			border: none;
 			a {
 				text-decoration: none;
 				color: var(--white);

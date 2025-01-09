@@ -5,6 +5,7 @@
 	import { fly } from 'svelte/transition';
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import MediaQuery from '../MediaQuery/MediaQuery.svelte';
 	let logo = false;
 
 	function handleClick() {
@@ -18,21 +19,44 @@
 	});
 </script>
 
-<div class="notch">
-	<div
-		class="corner-notch"
-		transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}
-	>
-		<img class="cornernotch-svg" src={cornerNotch} alt="" />
+<MediaQuery query="(min-width: 1024px)" let:matches>
+	{#if matches}
+		<div class="notch">
+			<div
+				class="corner-notch"
+				transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}
+			>
+				<img class="cornernotch-svg" src={cornerNotch} alt="" />
 
-		{#if logo}
-			<div class="cta"  transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
-				<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
-				<img onclick={handleClick} src={cta} alt="" />
+				{#if logo}
+					<div class="cta" transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
+						<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
+						<img onclick={handleClick} src={cta} alt="" />
+					</div>
+				{/if}
 			</div>
-		{/if}
-	</div>
-</div>
+		</div>
+	{/if}
+</MediaQuery>
+<MediaQuery query="(max-width: 1023px)" let:matches>
+	{#if matches}
+		<div class="mobile-notch">
+			<div
+				class="corner-notch"
+				transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}
+			>
+				<img class="cornernotch-svg" src={cornerNotch} alt="" />
+
+				{#if logo}
+					<div class="cta" transition:fly={{ y: 50, delay: 300, duration: 1000, easing: quintOut }}>
+						<!-- svelte-ignore a11y_click_events_have_key_events a11y_no_noninteractive_element_interactions -->
+						<img onclick={handleClick} src={cta} alt="" />
+					</div>
+				{/if}
+			</div>
+		</div>
+	{/if}
+</MediaQuery>
 
 <style lang="scss">
 	.notch {
@@ -41,36 +65,74 @@
 		justify-content: end;
 		align-items: start;
 		background-color: white;
-	}
-	.corner-notch {
-		position: absolute;
-		width: fit-content;
-		display: flex;
-		justify-content: center;
-		align-items: start;
-		position: absolute;
-		z-index: 99;
-		bottom: -1px;
-		right: -1px;
 
-		.cornernotch-svg{
-			width: 250px;
-		}
-		.cta {
+		.corner-notch {
 			position: absolute;
-			height: 100%;
+			width: fit-content;
 			display: flex;
 			justify-content: center;
-			align-items: end;
-			bottom: 10%;
-			left: 10%;
+			align-items: start;
+			position: absolute;
+			z-index: 99;
+			bottom: 0px;
+			right: 0px;
+			.cta {
+				position: absolute;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: end;
+				bottom: 10%;
+				left: 20%;
 
-			img {
-				max-width: 80%;
-				transition: 0.2s ease-in-out;
-				&:hover {
-					scale: 1.01;
-					cursor: pointer;
+				img {
+					max-width: 150%;
+					transition: 0.2s ease-in-out;
+					&:hover {
+						scale: 1.01;
+						cursor: pointer;
+					}
+				}
+			}
+		}
+	}
+	.mobile-notch {
+		width: 100%;
+		display: flex;
+		justify-content: end;
+		align-items: start;
+		background-color: white;
+
+		.corner-notch {
+			position: absolute;
+			width: fit-content;
+			display: flex;
+			justify-content: center;
+			align-items: start;
+			position: absolute;
+			z-index: 99;
+			bottom: -1px;
+			right: -1px;
+
+			.cornernotch-svg {
+				width: 250px;
+			}
+			.cta {
+				position: absolute;
+				height: 100%;
+				display: flex;
+				justify-content: center;
+				align-items: end;
+				bottom: 10%;
+				left: 10%;
+
+				img {
+					max-width: 80%;
+					transition: 0.2s ease-in-out;
+					&:hover {
+						scale: 1.01;
+						cursor: pointer;
+					}
 				}
 			}
 		}
