@@ -602,10 +602,10 @@
 				flex-direction: column;
 				.above {
 					width: 32px;
-					margin-bottom: -2px;
+					margin-bottom: -1px;
 				}
 				.below {
-					margin-top: -2px;
+					margin-top: -1px;
 					rotate: 180deg;
 					transform: scaleX(-1);
 					width: 32px;
@@ -646,6 +646,7 @@
 				align-items: center;
 				justify-content: center;
 				p {
+					max-width: 80%;
 					opacity: 0.6;
 					font-size: var(--mfs-300);
 				}
