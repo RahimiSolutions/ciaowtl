@@ -133,7 +133,7 @@
 							<Button
 								text="Request a Quote"
 								borderRadius="5px"
-								link="https://wa.me/4917657966211"
+								link="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%20want%20to%20request%20a%20quote%20from%20%5Bcity%2C%20country%5D%20to%20%5Bcity%2C%20country%5D%0ABest%20regards%2C%0A%5BYour%20Name%5D"
 							/>
 						</div>
 					</div>
@@ -165,7 +165,7 @@
 					/>
 				</div>
 				<div class="button">
-					<Button text="Learn More" borderRadius="5px" link="https://wa.me/4917657966211" />
+					<Button text="Learn More" borderRadius="5px" link="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%E2%80%99m%20planning%20to%20send%20a%20shipment%20and%20would%20like%20to%20discuss%20how%20your%20services%20can%20meet%20my%20needs.%20Could%20we%20schedule%20a%20time%20to%20talk%20and%20see%20if%20we%E2%80%99re%20the%20right%20fit%3F%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D" />
 				</div>
 			</div>
 
@@ -258,7 +258,7 @@
 					<div class="partner-marquee">
 						<LogoMarquee />
 						<img src={cornerNotchGreen} alt="Scalable Vector Graphic of corner notch" />
-						<p><a href="https://wa.me/4917657966211">Let's deliver for you</a></p>
+						<p><a target="_blank" href="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%20want%20to%20request%20a%20quote%20from%20%5Bcity%2C%20country%5D%20to%20%5Bcity%2C%20country%5D%0ABest%20regards%2C%0A%5BYour%20Name%5D">Let's deliver for you</a></p>
 					</div>
 				</div>
 			</div>
@@ -275,7 +275,7 @@
 							out, and together we'll find the ideal solution for you!
 						</p>
 					</div>
-					<Button text="Explore Options" borderRadius="5px" link="https://wa.me/4917657966211" />
+					<Button text="Explore Options" borderRadius="5px" link="https://wa.me/4917657966211?text=Hi%20Ciao-team,%20I%20need%20assistance%20in%20selecting%20the%20right%20container%20for%20my%20upcoming%20shipment.%20Could%20you%20help%20me%20find%20the%20best%20fit?%0A%0ABest%20regards,%0A[Your%20Name]" />
 				</div>
 			</div>
 
@@ -356,7 +356,7 @@
 							<Button
 								text="Request a Quote"
 								borderRadius="5px"
-								link="https://wa.me/4917657966211"
+								link="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%20want%20to%20request%20a%20quote%20from%20%5Bcity%2C%20country%5D%20to%20%5Bcity%2C%20country%5D%0ABest%20regards%2C%0A%5BYour%20Name%5D"
 							/>
 						</div>
 					</div>
@@ -389,7 +389,7 @@
 					/>
 				</div>
 				<div class="button">
-					<Button text="Learn More" borderRadius="5px" link="https://wa.me/4917657966211" />
+					<Button text="Learn More" borderRadius="5px" link="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%E2%80%99m%20planning%20to%20send%20a%20shipment%20and%20would%20like%20to%20discuss%20how%20your%20services%20can%20meet%20my%20needs.%20Could%20we%20schedule%20a%20time%20to%20talk%20and%20see%20if%20we%E2%80%99re%20the%20right%20fit%3F%0A%0ABest%20regards%2C%0A%5BYour%20Name%5D" />
 				</div>
 			</div>
 
@@ -480,7 +480,7 @@
 					<div class="partner-marquee">
 						<LogoMarquee imgSize="50px" />
 						<img src={cornerNotchGreen} alt="Scalable Vector graphic of green notch" />
-						<p><a href="https://wa.me/4917657966211">Let's deliver for you</a></p>
+						<p><a href="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%20want%20to%20request%20a%20quote%20from%20%5Bcity%2C%20country%5D%20to%20%5Bcity%2C%20country%5D%0ABest%20regards%2C%0A%5BYour%20Name%5D">Let's deliver for you</a></p>
 
 					</div>
 				</div>
@@ -498,7 +498,7 @@
 							out, and together we'll find the ideal solution for you!
 						</p>
 					</div>
-					<Button text="Explore Options" borderRadius="5px" link="https://wa.me/4917657966211" />
+					<Button text="Explore Options" borderRadius="5px" link="https://wa.me/4917657966211?text=Hi%20Ciao-team,%20I%20need%20assistance%20in%20selecting%20the%20right%20container%20for%20my%20upcoming%20shipment.%20Could%20you%20help%20me%20find%20the%20best%20fit?%0A%0ABest%20regards,%0A[Your%20Name]" />
 				</div>
 			</div>
 

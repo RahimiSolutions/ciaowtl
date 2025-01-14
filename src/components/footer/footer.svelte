@@ -105,7 +105,7 @@
 								>
 							</li>
 							<li>
-								<a href="https://wa.me/4917657966211" target="_blank"
+								<a href="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%20want%20to%20request%20a%20quote%20from%20%5Bcity%2C%20country%5D%20to%20%5Bcity%2C%20country%5D%0ABest%20regards%2C%0A%5BYour%20Name%5D" target="_blank"
 									><img src={whatsapp} alt="whatsapp icon" /></a
 								>
 							</li>
@@ -153,7 +153,7 @@
 							<li><a href="/#services">Services</a></li>
 							<li><a href="/#contact">Contact</a></li>
 							<li><a href="/#reviews">Reviews</a></li>
-							<li><a href="https://wa.me/4917657966211" target="_blank">Get a Quote</a></li>
+							<li><a href="https://wa.me/4917657966211?text=Hi%20Ciao-team%2C%20I%20want%20to%20request%20a%20quote%20from%20%5Bcity%2C%20country%5D%20to%20%5Bcity%2C%20country%5D%0ABest%20regards%2C%0A%5BYour%20Name%5D" target="_blank">Get a Quote</a></li>
 							<li><a href="/imprint">Imprint</a></li>
 						</ul>
 					</div>

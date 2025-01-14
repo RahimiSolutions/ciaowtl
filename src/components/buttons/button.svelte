@@ -13,7 +13,7 @@
 	function handleClick() {
 		if (link) {
 			if (link.startsWith('http://') || link.startsWith('https://')) {
-				window.location.href = link;
+				window.open(link, '_blank');
 			} else {
 				goto(link);
 			}
