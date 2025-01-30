@@ -1,22 +1,15 @@
-<script lang="ts">
-	import Download from '$lib/icons/download.svelte';
-
-	const deutschPdfPath = '/adsp/adsp_2017_deutsch.pdf';
-	const englishPdfPath = '/adsp/adsp_2017_english.pdf';
-</script>
-
 <section class="privacy-policy">
 	<h1>Privacy Policy</h1>
 	<p>Last Updated: 29.01.2025</p>
 	<article>
 		<h2>1. Introduction</h2>
 		<p>
-			Ciao ("we," "us," or "our") operates the website https://www.ciaowtl.com/ and is committed to
-			protecting your privacy under the EU General Data Protection Regulation (GDPR) and the German
-			Federal Data Protection Act (BDSG). This policy explains how we handle data when you use our
-			website.
+			CIAO! World Transport & Logistics UG ("we," "us," or "our") operates the website
+			https://www.ciaowtl.com/ and is committed to protecting your privacy under the EU General Data
+			Protection Regulation (GDPR) and the German Federal Data Protection Act (BDSG). This policy
+			explains how we handle data when you use our website.
 		</p>
-		<p>Key Points:</p>
+		<h4>Key Points:</h4>
 		<ul>
 			<li>We do not collect, store, or process any personal data.</li>
 			<li>We use a third-party service (Elfsight) solely to display Google Reviews.</li>
@@ -133,7 +126,7 @@
 			info@ciao-wtl.com<br />
 			+49 4075 695565
 		</address>
-		<br/>
+		<br />
 		<p>For GDPR-specific requests, contact Elfsight directly.</p>
 	</article>
 </section>
@@ -167,11 +160,11 @@
 			font-size: var(--fs-500);
 		}
 
-		ul{
+		ul {
 			list-style-position: inside;
 		}
 
-		hr{
+		hr {
 			margin: 36px 0;
 		}
 	}
